@@ -4,21 +4,26 @@ using namespace std;
 
 
 //CONSTRUCTORS
+
 Bien::Bien()
 {
 
 }
 
-Bien::Bien(unsigned int identifiant, string adresse , double prix, double mCarre, unsigned int refClientVendeur)
+Bien::Bien(unsigned int identifiant, string adresse , double prix, double mCarre,ClientVendeur refClientVendeur)
 {
     this->identifiant=identifiant;
     this->adresse=adresse;
     this->prix=prix;
     this->mCarre=mCarre;
-    this->refClientVendeur=refClientVendeur;
+    this->refClientVendeur=&refClientVendeur;
 
 }
 //GETTERS AND SETTERS
+ClientVendeur *Bien::getRefClientVendeur() const
+{
+return refClientVendeur;
+}
 unsigned int Bien::getIdentifiant() const
 {
     return identifiant;
@@ -59,15 +64,7 @@ void Bien::setCarre(double carre)
     mCarre = carre;
 }
 
-unsigned int Bien::getRefClientVendeur() const
-{
-    return refClientVendeur;
-}
 
-void Bien::setRefClientVendeur(unsigned int value)
-{
-    refClientVendeur = value;
-}
 
 
 //OTHERS METHODS

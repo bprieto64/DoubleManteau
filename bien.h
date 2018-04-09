@@ -1,22 +1,22 @@
 #ifndef BIEN_H
 #define BIEN_H
 #include <string>
+#include "clientvendeur.h"
 using namespace std;
-
 
 class Bien
 {
 
 protected:
-    unsigned int identifiant; // tester identifiant non nul
+    unsigned int  identifiant; // tester identifiant non nul
     string adresse; // créer adresse en classe ?
     double prix;
     double mCarre;
-    unsigned int refClientVendeur;
+    ClientVendeur* refClientVendeur;
 
 public:
     Bien();
-    Bien(unsigned int identifiant, string adresse , double prix, double mCarre, unsigned int refClientVendeur);
+    Bien(unsigned int identifiant, string adresse , double prix, double mCarre,ClientVendeur refClientVendeur);
 
     unsigned int getIdentifiant() const;
     void setIdentifiant(unsigned int value);
@@ -30,10 +30,11 @@ public:
     double getCarre() const;
     void setCarre(double carre);
 
-    unsigned int getRefClientVendeur() const;
-    void setRefClientVendeur(unsigned int value);
+
+    ClientVendeur *getRefClientVendeur() const;
 
     void afficher();
+
 
 
 };

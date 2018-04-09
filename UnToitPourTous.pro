@@ -21,7 +21,11 @@ SOURCES += \
     immeuble.cpp \
     maison.cpp \
     locauxpro.cpp \
-    client.cpp
+    client.cpp \
+    clientvendeur.cpp \
+    clientacheteur.cpp \
+    visite.cpp \
+    agence.cpp
 
 HEADERS += \
     bien.h \
@@ -29,4 +33,8 @@ HEADERS += \
     immeuble.h \
     maison.h \
     locauxpro.h \
-    client.h
+    client.h \
+    clientvendeur.h \
+    clientacheteur.h \
+    visite.h \
+    agence.h

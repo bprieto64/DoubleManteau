@@ -9,7 +9,7 @@ Maison::Maison()
 
 }
 
-Maison::Maison(unsigned int nbrPieces, bool hasGarage, bool hasJardin, bool hasPiscine, unsigned int identifiant, string adresse, double prix, double mCarre, unsigned int refClientVendeur)
+Maison::Maison(unsigned int nbrPieces, bool hasGarage, bool hasJardin, bool hasPiscine, unsigned int identifiant, string adresse, double prix, double mCarre, ClientVendeur refClientVendeur)
  :Bien(identifiant,adresse,prix,mCarre,refClientVendeur)
 {
     this->nbrPieces=nbrPieces;
