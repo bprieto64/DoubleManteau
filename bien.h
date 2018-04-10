@@ -33,7 +33,7 @@ public:
 
     ClientVendeur *getRefClientVendeur() const;
 
-    void afficher();
+    virtual void afficher();
 
 
 
