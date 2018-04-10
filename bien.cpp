@@ -73,7 +73,7 @@ void Bien::afficher()
    cout<<"L'adresse du bien numéro : "<<identifiant<< " est "<<adresse<<"."<<endl;
    cout<<"le prix de bien est : "<< prix << " €."<<endl;
    cout<<"Sa superficie est de "<<mCarre<<" m²."<<endl;
-   cout<<"Le numéro du vendeur est "<<refClientVendeur<<"." <<endl;
+   cout<<"Le numéro du vendeur est "<<refClientVendeur->getIdentifiant()<<"." <<endl;
 }
 
 

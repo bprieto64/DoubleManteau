@@ -2,25 +2,34 @@
 #include <iostream>
 using namespace std;
 
-std::map<ClientAcheteur *, Visite *> Agence::getCarnetVisites() const
+
+
+
+
+
+
+std::vector<Bien> Agence::getBiens() const
 {
-    return carnetVisites;
+    return biens;
 }
 
-std::vector<Client> Agence::getCarnetClients() const
-{
-    return carnetClients;
-}
 
-void Agence::setCarnetClients(const std::vector<Client> &value)
-{
-    carnetClients = value;
-}
 
 Agence::Agence()
 {
 
 }
+
+std::vector<ClientVendeur> Agence::getCarnetClientsVendeurs() const
+{
+    return carnetClientsVendeurs;
+}
+std::vector<ClientAcheteur> Agence::getCarnetClientsAcheteurs() const
+{
+    return carnetClientsAcheteurs;
+}
+
+
 
 
 void Agence::ajouterNouvelleVisite(ClientAcheteur *clientAcheteur, Visite *visite)
@@ -40,35 +49,90 @@ void Agence::supprimerVisite(ClientAcheteur *clientAcheteur, double propAchat,un
     }
 }
 
-void Agence::ajouterNouveauClient(Client client)
+
+void Agence::ajouterNouveauClientVendeur(ClientVendeur client)
 {
-    carnetClients.push_back(client);
+    carnetClientsVendeurs.push_back(client);
 }
 
-void Agence::supprimerClient(unsigned int identifiant)
+void Agence::supprimerClientVendeur(unsigned int identifiant)
 {
-    for(vector<Client>::iterator i = carnetClients.begin();i !=carnetClients.end() ; i++){
+    for(vector<ClientVendeur>::iterator i = carnetClientsVendeurs.begin();i !=carnetClientsVendeurs.end() ; i++){
         if(i->getIdentifiant()==identifiant){
 
-            carnetClients.erase(i);
+            carnetClientsVendeurs.erase(i);
         }
     }
 }
 
-Client  Agence::isClientExiste(unsigned int identifiant)
+bool Agence::isClientExisteV(unsigned int identifiant)
 {
 
+    for(unsigned i=0; i<carnetClientsVendeurs.size();i++){
+        if(carnetClientsVendeurs[i].getIdentifiant()==identifiant){
 
-    for(auto  i = carnetClients.begin();i !=carnetClients.end() ; i++){
+            return true;
+        }
+    }
+    return false;
+
+}
+
+ClientVendeur Agence::recupererClientVendeur(unsigned int identifiant)
+{
+    for(vector<ClientVendeur>::iterator i = carnetClientsVendeurs.begin();i !=carnetClientsVendeurs.end() ; i++){
         if(i->getIdentifiant()==identifiant){
-            cout <<i->getIdentifiant()<<endl;
+
             return *i;
         }
     }
 
 }
 
+void Agence::ajouterNouveauClientAcheteur(ClientAcheteur client)
+{
+    carnetClientsAcheteurs.push_back(client);
+}
 
+void Agence::supprimerClientAcheteur(unsigned int identifiant)
+{
+    for(vector<ClientAcheteur>::iterator i = carnetClientsAcheteurs.begin();i !=carnetClientsAcheteurs.end() ; i++){
+        if(i->getIdentifiant()==identifiant){
+
+            carnetClientsAcheteurs.erase(i);
+        }
+    }
+
+}
+
+bool Agence::isClientExisteA(unsigned int identifiant)
+{
+
+    for(unsigned i=0; i<carnetClientsAcheteurs.size();i++){
+        if(carnetClientsAcheteurs[i].getIdentifiant()==identifiant){
+
+            return true;
+        }
+    }
+    return false;
+
+}
+
+ClientAcheteur Agence::recupererClientAcheteur(unsigned int identifiant)
+{
+    for(vector<ClientAcheteur>::iterator i = carnetClientsAcheteurs.begin();i !=carnetClientsAcheteurs.end() ; i++){
+        if(i->getIdentifiant()==identifiant){
+
+            return *i;
+        }
+    }
+
+}
+
+void Agence::ajouterNouveauBien(Bien bien)
+{
+    biens.push_back(bien);
+}
 
 
 

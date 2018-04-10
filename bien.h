@@ -34,6 +34,7 @@ public:
     ClientVendeur *getRefClientVendeur() const;
 
     virtual void afficher();
+    unsigned int genererIdentifiant();
 
 
 
