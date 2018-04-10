@@ -2,18 +2,32 @@
 
 
 //CONSTRUCTORS
+
 Client::Client()
 {
-
+    
 }
 
-Client::Client(string nom, string adresse)
+Client::Client(unsigned int identifiant,string nom, string adresse)
 {
+    this->identifiant=identifiant;
     this->nom=nom;
     this->adresse=adresse;
 }
 
 //GETTERS AND SETTERS
+
+unsigned int Client::getIdentifiant() const
+{
+    return identifiant;
+}
+
+void Client::setIdentifiant(unsigned int value)
+{
+    identifiant = value;
+}
+
+
 string Client::getNom() const
 {
     return nom;
@@ -33,6 +47,7 @@ void Client::setAdresse(const string &value)
 {
     adresse = value;
 }
+
 
 
 //OTHERS METHODS

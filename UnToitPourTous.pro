@@ -25,7 +25,8 @@ SOURCES += \
     clientvendeur.cpp \
     clientacheteur.cpp \
     visite.cpp \
-    agence.cpp
+    agence.cpp \
+    terrain.cpp
 
 HEADERS += \
     bien.h \
@@ -37,4 +38,5 @@ HEADERS += \
     clientvendeur.h \
     clientacheteur.h \
     visite.h \
-    agence.h
+    agence.h \
+    terrain.h

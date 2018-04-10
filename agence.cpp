@@ -1,9 +1,20 @@
 #include "agence.h"
-#include <map>
+#include <iostream>
 using namespace std;
+
 std::map<ClientAcheteur *, Visite *> Agence::getCarnetVisites() const
 {
     return carnetVisites;
+}
+
+std::vector<Client> Agence::getCarnetClients() const
+{
+    return carnetClients;
+}
+
+void Agence::setCarnetClients(const std::vector<Client> &value)
+{
+    carnetClients = value;
 }
 
 Agence::Agence()
@@ -28,5 +39,36 @@ void Agence::supprimerVisite(ClientAcheteur *clientAcheteur, double propAchat,un
         }
     }
 }
+
+void Agence::ajouterNouveauClient(Client client)
+{
+    carnetClients.push_back(client);
+}
+
+void Agence::supprimerClient(unsigned int identifiant)
+{
+    for(vector<Client>::iterator i = carnetClients.begin();i !=carnetClients.end() ; i++){
+        if(i->getIdentifiant()==identifiant){
+
+            carnetClients.erase(i);
+        }
+    }
+}
+
+Client  Agence::isClientExiste(unsigned int identifiant)
+{
+
+
+    for(auto  i = carnetClients.begin();i !=carnetClients.end() ; i++){
+        if(i->getIdentifiant()==identifiant){
+            cout <<i->getIdentifiant()<<endl;
+            return *i;
+        }
+    }
+
+}
+
+
+
 
 
