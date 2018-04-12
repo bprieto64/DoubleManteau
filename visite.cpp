@@ -30,17 +30,8 @@ void Visite::setPropAchat(double value)
     propAchat = value;
 }
 
-Etat Visite::getEtat() const
-{
-    return etat;
-}
 
-void Visite::setEtat(const Etat &value)
-{
-    etat = value;
-}
-
-Visite::Visite(Bien *bien, bool isPropAchat, double propAchat, Etat etat)
+Visite::Visite(Bien *bien, bool isPropAchat, double propAchat, string etat)
 {
     this->bien=bien;
     this->isPropAchat=isPropAchat;
@@ -48,7 +39,17 @@ Visite::Visite(Bien *bien, bool isPropAchat, double propAchat, Etat etat)
     this->etat=etat;
 }
 
+string Visite::getEtat() const
+{
+    return etat;
+}
+
+void Visite::setEtat(const string &value)
+{
+    etat = value;
+}
+
 Visite::Visite()
 {
-
+    
 }

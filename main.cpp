@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
             if(var=="1"){//ajouter un bien à vendre
                 A.AjouterBienAVendre(&cv);
             }
-            if(var=="2"){
+            else if(var=="2"){//Consulter mes biens a vendre
                 var="0";
                 A.consulterMesBiensAVendre(&cv);
 
@@ -102,6 +102,12 @@ int main(int argc, char *argv[])
                     A.consulterDetailsBien(numB);
                 }
 
+
+
+
+            }
+            else if(var=="3"){
+                A.consulterMesOffresAchats(&cv);
 
             }
         }
@@ -127,21 +133,40 @@ int main(int argc, char *argv[])
             while(var != "1" && var!="2");
 
             if(var=="1"){
-                A.consulterBien();
-                var="0";
-                do{
-                    cout << "Voulez-vous consulter les details d'une offre ?" << endl;
-                    cout<<"(1) Oui"<<endl;
-                    cout<<"(2) Non"<<endl;
+                bool retour =false;
+                while(!retour){
+                    A.consulterBien();
+                    var="0";
+                    do{
+                        cout << "Voulez-vous consulter les details d'une offre ?" << endl;
+                        cout<<"(1) Oui"<<endl;
+                        cout<<"(2) Non"<<endl;
 
-                    getline(cin,var);
-                }
-                while(var != "1" && var!="2");
-                if(var=="1"){
-                    cout << "De quel bien voulez-vous consulter les details ?" << endl;
-                    getline(cin,var);
-                    int numB=stoi(var);
-                    A.consulterDetailsBien(numB);
+                        getline(cin,var);
+                    }
+                    while(var != "1" && var!="2");
+                    if(var=="1"){
+                        cout << "De quel bien voulez-vous consulter les details ?" << endl;
+                        getline(cin,var);
+                        int numB=stoi(var);
+                        A.consulterDetailsBien(numB);
+                        var="0";
+                        do{
+                            cout<<"Voulez vous faire une visite?"<<endl;
+                            cout<<"(1) Oui"<<endl;
+                            cout<<"(2) Non"<<endl;
+                            getline(cin,var);
+
+                        }while(var != "1" && var!="2");
+
+                        if(var=="1"){
+                            A.faireVisite(&ca,numB);
+                        }
+
+                    }
+                    else if (var=="2"){
+                        retour=true;
+                    }
                 }
             }
         }

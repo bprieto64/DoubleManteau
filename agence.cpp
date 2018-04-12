@@ -24,6 +24,76 @@ void Agence::consulterDetailsBien(int ienb){
     biens[ienb]->afficherTout();
 }
 
+void Agence::faireVisite(ClientAcheteur *ca,int identifiant)
+{
+    Bien * bien=biens[identifiant];
+    string var="0";
+    cout<<"Visite en cours"<<endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+    cout<<"..."<<endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+    cout<<"Visite terminer"<<endl;
+
+
+    do{
+        cout<<"Souhaitez vous faire une offre d'achat?"<<endl;
+        cout<<"(1) oui"<<endl;
+        cout<<"(2) non"<<endl;
+
+        getline(cin,var);
+
+    }while(var != "1" && var !="2");
+
+    if(var=="1"){//veut faire une offre d'achat
+                cout<<"Quel est le montant de votre offre d'achat? ( en euros)"<<endl;
+                double offreAchat=0;
+                getline(cin,var);
+               offreAchat=stod(var);
+           carnetVisites.insert(pair<ClientAcheteur*,Visite*>(ca,new Visite(bien,true,offreAchat,"ATTENTE")));
+    }
+    else if(var=="2"){// pas df'offre d'achat
+          carnetVisites.insert(pair<ClientAcheteur*,Visite*>(ca,new Visite(bien,false,0,"NOETAT")));
+    }
+
+
+}
+
+void Agence::consulterMesOffresAchats(ClientVendeur *cv)
+{
+    string var="0";
+    for(map<ClientAcheteur*,Visite*>::iterator it =carnetVisites.begin(); it!=carnetVisites.end() ; it++){
+        if((it->second->getEtat()=="ATTENTE") && (it->second->getBien()->getRefClientVendeur()->getIdentifiant() == cv->getIdentifiant())){
+
+            cout<<"La proposition d'achat est de : "<<it->second->getPropAchat()<<" euros"<<endl;
+            cout <<"Elle a ete fait sur le bien suivant"<<endl;
+            it->second->getBien()->affichageSimple();
+
+            do{
+                cout<<"Souhaitez vous accepter ou refuser cette offre d'achat ? "<<endl;
+                cout<<"(1) Accepter"<<endl;
+                cout<<"(2) Refuser "<<endl;
+
+                getline(cin,var);
+
+            }while(var != "1" && var !="2");
+            if(var=="1"){
+               it->second->setEtat("ACCEPTER");
+            cout<<"Vous avez accepté cette offre d'achat"<<endl;
+            cout<<"Merci d'avoir fait confiance a Un toit pour TOUS"<<endl;
+            }
+            else if(var=="2"){
+               it->second->setEtat("REFUSER");
+            cout<<"Vous avez refuser cette offre d'achat"<<endl;
+
+            }
+
+
+
+        }
+    }
+
+}
+
 
 void Agence::consulterMesBiensAVendre(ClientVendeur *cv)
 {

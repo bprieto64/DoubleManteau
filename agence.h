@@ -13,6 +13,8 @@
 #include "maison.h"
 #include "terrain.h"
 #include "locauxpro.h"
+#include <chrono>
+#include <thread>
 
 
 class Agence
@@ -45,6 +47,8 @@ public:
 
    void consulterBien();
    void consulterDetailsBien(int);
+   void faireVisite(ClientAcheteur *ca, int identifiant);
+   void consulterMesOffresAchats(ClientVendeur *cv);
 
     std::map<ClientAcheteur *, Visite *> getCarnetVisites() const;
 
