@@ -140,7 +140,7 @@ void Agence::AjouterBienAVendre(ClientVendeur *cv)
 
     //ajout de l'identifiant
     unsigned int identifiant = biens.back()->getIdentifiant() +1;
-    cout<<identifiant<<endl;
+    //cout<<identifiant<<endl;
 
     //ajout de l'adresse
     cout<<"Quel est numero de rue de votre bien ?"<<endl;
