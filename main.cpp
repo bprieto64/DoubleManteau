@@ -26,9 +26,8 @@ int main(int argc, char *argv[])
     Appartement *appart= new Appartement(2,2,true,true,true,123,Adresse(99,"chemin des choureuts",40160,"Ychoux"),123,123,c);
     A.ajouterNouveauBien(appart);
 
-
-    A.ajouterNouveauBien(appart);
-
+    Maison *m = new Maison(5,true,true,true,3,Adresse(24,"chemin d'Usta",64480,"Ustaritz"),127.5,2,c);
+    A.ajouterNouveauBien(m);
 
     string var="10";
     while(1==1){
@@ -57,12 +56,10 @@ int main(int argc, char *argv[])
                 cout<<"Quel est votre identifiant svp?"<<endl;
 
                 getline(cin,var);
-
-
-
             }
             while(A.isClientExisteV(stoi(var))!=true);
-            ClientVendeur  cv=A.recupererClientVendeur(stoi(var));
+
+            ClientVendeur cv=A.recupererClientVendeur(stoi(var));
 
             var="0";
             do {
@@ -84,8 +81,43 @@ int main(int argc, char *argv[])
 
         }
         else if(var =="2"){// le client est acheteur
+            var="0";
+            do {
+                cout<<"Quel est votre identifiant svp?"<<endl;
 
+                getline(cin,var);
+            }
+            while(A.isClientExisteA(stoi(var))!=true);
 
+            ClientAcheteur ca = A.recupererClientAcheteur(stoi(var));
+
+            var="0";
+
+            do{
+                cout<<"(1) Consulter les biens."<<endl;
+                cout<<"(2) Consulter mes propositions d achat."<<endl;
+
+                getline(cin,var);
+            }
+            while(var != "1" && var!="2");
+
+            if(var=="1"){
+                A.consulterBien();
+                cout << "Voulez-vous consulter les details d'une offre ?" << endl;
+                do{
+                    cout<<"(1) Oui"<<endl;
+                    cout<<"(2) Non"<<endl;
+
+                    getline(cin,var);
+                }
+                while(var != "1" && var!="2");
+                if(var=="1"){
+                   cout << "De quel bien voulez-vous consulter les details ?" << endl;
+                   getline(cin,var);
+                   int numB=stoi(var);
+                   A.consulterDetailsBien(numB);
+                }
+            }
         }
     }
 

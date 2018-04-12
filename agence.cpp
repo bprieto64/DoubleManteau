@@ -4,16 +4,21 @@ using namespace std;
 
 
 
-
-
-
-
 std::vector<Bien*> Agence::getBiens() const
 {
     return biens;
 }
 
+void Agence::consulterBien(){
+    for(unsigned i=0; i<biens.size();i++){
+        cout << "(" << i << ")";
+        biens[i]->affichageSimple();
+    }
+}
 
+void Agence::consulterDetailsBien(int ienb){
+    biens[ienb]->afficherTout();
+}
 
 Agence::Agence()
 {
@@ -82,7 +87,6 @@ ClientVendeur Agence::recupererClientVendeur(unsigned int identifiant)
 {
     for(vector<ClientVendeur>::iterator i = carnetClientsVendeurs.begin();i !=carnetClientsVendeurs.end() ; i++){
         if(i->getIdentifiant()==identifiant){
-
             return *i;
         }
     }
@@ -122,7 +126,6 @@ ClientAcheteur Agence::recupererClientAcheteur(unsigned int identifiant)
 {
     for(vector<ClientAcheteur>::iterator i = carnetClientsAcheteurs.begin();i !=carnetClientsAcheteurs.end() ; i++){
         if(i->getIdentifiant()==identifiant){
-
             return *i;
         }
     }
@@ -144,7 +147,7 @@ void Agence::AjouterBienAVendre(ClientVendeur *cv)
 
     //ajout de l'adresse
     cout<<"Quel est numero de rue de votre bien ?"<<endl;
-    //Adresse adresse;
+
     int numRue;
     getline(cin,var);
     numRue=stoi(var);

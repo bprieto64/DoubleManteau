@@ -42,6 +42,9 @@ public:
    void ajouterNouveauBien(Bien * bien);
    void AjouterBienAVendre(ClientVendeur *cv);
 
+   void consulterBien();
+   void consulterDetailsBien(int);
+
     std::map<ClientAcheteur *, Visite *> getCarnetVisites() const;
 
 

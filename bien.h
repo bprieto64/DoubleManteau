@@ -38,6 +38,7 @@ public:
 
     unsigned int genererIdentifiant();
     void afficherTout();
+    void affichageSimple();
 
 
 
