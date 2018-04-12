@@ -7,6 +7,9 @@
 #include <map>
 #include <vector>
 #include "bien.h"
+#include <iostream>
+#include <string>
+#include "appartement.h"
 
 
 class Agence
@@ -15,7 +18,7 @@ private :
     std::map<ClientAcheteur*,Visite*> carnetVisites;
     std::vector<ClientVendeur> carnetClientsVendeurs;
     std::vector<ClientAcheteur> carnetClientsAcheteurs;
-    std::vector<Bien> biens;
+    std::vector<Bien*> biens;
 
 public:
     Agence();
@@ -33,7 +36,8 @@ public:
     bool isClientExisteA(unsigned int identifiant);
     ClientAcheteur recupererClientAcheteur(unsigned int identifiant);
 
-   void ajouterNouveauBien(Bien bien);
+   void ajouterNouveauBien(Bien * bien);
+   void AjouterBienAVendre(ClientVendeur *cv);
 
     std::map<ClientAcheteur *, Visite *> getCarnetVisites() const;
 
@@ -44,7 +48,7 @@ public:
 
     std::vector<ClientAcheteur> getCarnetClientsAcheteurs() const;
 
-    std::vector<Bien> getBiens() const;
+    std::vector<Bien*> getBiens() const;
 
 };
 

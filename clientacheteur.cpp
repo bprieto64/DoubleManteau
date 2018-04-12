@@ -11,3 +11,8 @@ ClientAcheteur::ClientAcheteur(unsigned int identifiant, string nom, string adre
 
 
 }
+
+void ClientAcheteur::afficher()
+{
+
+}

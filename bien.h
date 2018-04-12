@@ -13,6 +13,8 @@ protected:
     double prix;
     double mCarre;
     ClientVendeur* refClientVendeur;
+    virtual void afficher()=0;
+
 
 public:
     Bien();
@@ -33,8 +35,9 @@ public:
 
     ClientVendeur *getRefClientVendeur() const;
 
-    virtual void afficher();
+
     unsigned int genererIdentifiant();
+    void afficherTout();
 
 
 

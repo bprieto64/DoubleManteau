@@ -40,9 +40,9 @@ void Visite::setEtat(const Etat &value)
     etat = value;
 }
 
-Visite::Visite(Bien bien, bool isPropAchat, double propAchat, Etat etat)
+Visite::Visite(Bien *bien, bool isPropAchat, double propAchat, Etat etat)
 {
-    this->bien=&bien;
+    this->bien=bien;
     this->isPropAchat=isPropAchat;
     this->propAchat=propAchat;
     this->etat=etat;

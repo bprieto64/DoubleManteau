@@ -14,7 +14,7 @@ private:
 
 
 public:
-    Visite(Bien bien, bool isPropAchat,double propAchat,Etat etat);
+    Visite(Bien * bien, bool isPropAchat,double propAchat,Etat etat);
     Visite();
     Bien *getBien() const;
     void setBien(Bien *value);

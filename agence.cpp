@@ -1,5 +1,5 @@
 #include "agence.h"
-#include <iostream>
+
 using namespace std;
 
 
@@ -8,7 +8,7 @@ using namespace std;
 
 
 
-std::vector<Bien> Agence::getBiens() const
+std::vector<Bien*> Agence::getBiens() const
 {
     return biens;
 }
@@ -129,10 +129,139 @@ ClientAcheteur Agence::recupererClientAcheteur(unsigned int identifiant)
 
 }
 
-void Agence::ajouterNouveauBien(Bien bien)
+void Agence::ajouterNouveauBien(Bien * bien)
 {
     biens.push_back(bien);
 }
+
+void Agence::AjouterBienAVendre(ClientVendeur *cv)
+{
+    string var="0";
+
+    //ajout de l'identifiant
+    unsigned int identifiant = biens.back()->getIdentifiant() +1;
+    cout<<identifiant<<endl;
+
+    //ajout de l'adresse
+    cout<<"Quel est l'adresse de votre bien ?"<<endl;
+    string adresse;
+
+    getline(cin,var);
+
+    //ajout du prix
+    cout<<"Quel est le prix de votre bien? "<<endl;
+    double prix;
+
+    getline(cin,var);
+    prix=stod(var);
+
+    //ajout des m²
+    cout<<"Quel est le nombre de metres carres de votre bien? "<<endl;
+    double mCarre;
+
+    getline(cin,var);
+    mCarre=stod(var);
+
+    var="0";
+    do{
+
+        cout<<"Quel type de bien souhaitez vous ajouter?"<<endl;
+        cout<<"(1) Un appartement "<<endl;
+        cout<<"(2) Une maison"<<endl;
+        cout<<"(3) Un terrain "<<endl;
+        cout<<"(4) Un local professionnel "<<endl;
+
+        getline(cin,var);
+
+    } while(var != "1" && var !="2" && var!="3" && var!="4");
+
+    if(var=="1"){ // APPARTEMENT
+
+        cout<<"A quel etage est situe l'appartement?"<<endl;
+        unsigned int etage;
+
+        getline(cin,var);
+        etage=stoul(var);
+
+        cout<<"Combien de pièces possèdent il ? "<<endl;
+        unsigned int pieces;
+
+        getline(cin,var);
+        pieces=stoul(var);
+
+        var="0";
+        do{
+            cout<<"Votre appartement possède il un garage ? "<<endl;
+            cout<<"(1) oui"<<endl;
+            cout<<"(2) non"<<endl;
+
+            getline(cin,var);
+
+        }while(var != "1" && var !="2");
+
+        bool hasGarage;
+        if(var=="1"){
+            hasGarage=true;
+
+            getline(cin,var);
+
+        }
+        else{
+            hasGarage =false;
+        }
+
+
+
+        var="0";
+        do{
+            cout<<"Votre appartement possède il une cave ? "<<endl;
+            cout<<"(1) oui"<<endl;
+            cout<<"(2) non"<<endl;
+
+            getline(cin,var);
+
+        }while(var != "1" && var !="2");
+
+        bool hasCave;
+        if(var=="1"){
+            hasCave=true;
+
+        }
+        else{
+            hasCave =false;
+        }
+        var="0";
+        do{
+            cout<<"Votre appartement possède il un balcon ? "<<endl;
+            cout<<"(1) oui"<<endl;
+            cout<<"(2) non"<<endl;
+            getline(cin,var);
+
+
+        }while(var != "1" && var !="2");
+
+        bool hasBalcon;
+        if(var=="1"){
+            hasBalcon=true;
+
+        }
+        else{
+            hasBalcon =false;
+        }
+
+
+        Appartement *ap = new Appartement(pieces,etage,hasGarage,hasCave,hasBalcon,identifiant,adresse,prix,mCarre,*cv);
+        ajouterNouveauBien(ap);
+
+        for(unsigned int i=0;i<biens.size();i++){
+            biens[i]->afficherTout();
+        }
+
+    }
+
+
+}
+
 
 
 

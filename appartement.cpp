@@ -70,5 +70,15 @@ void Appartement::setEtage(unsigned int value)
 
 void Appartement::afficher()
 {
-
+    cout<<"L'appartement possède "<<nbrPieces<< " pièces."<<endl;
+    cout<<"Il est situé au "<<etage<<" étage."<<endl;
+    if(hasGarage){
+        cout<<"L'Appartement possède un garage."<<endl;
+    }
+    if(hasCave){
+        cout<<"L'Appartement possède une cave."<<endl;
+    }
+    if(hasBalcon){
+        cout<<"L'Appartement possède un balcon."<<endl;
+    }
 }

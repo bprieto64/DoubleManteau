@@ -14,6 +14,7 @@ public:
     std::vector <Bien*> mesbiens;
 
     std::vector<Bien *> getMesbiens() const;
+    void afficher();
 
 };
 

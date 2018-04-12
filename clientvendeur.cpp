@@ -16,3 +16,8 @@ std::vector<Bien *> ClientVendeur::getMesbiens() const
     return mesbiens;
 }
 
+void ClientVendeur::afficher()
+{
+
+}
+

@@ -1,6 +1,7 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 #include <string>
+#include <iostream>
 using namespace std;
 
 class Client
@@ -18,7 +19,7 @@ public:
     void setAdresse(const string &value);
     unsigned int getIdentifiant() const;
     void setIdentifiant(unsigned int value);
-
+    virtual void afficher()=0;
 };
 
 #endif // CLIENT_H
