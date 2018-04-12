@@ -6,7 +6,9 @@ LocauxPro::LocauxPro()
 {
 
 }
-LocauxPro::LocauxPro(double tailleVitrine, bool hasStockageMateriaux, unsigned int identifiant, string adresse, double prix, double mCarre,ClientVendeur* refClientVendeur)
+LocauxPro::LocauxPro(double tailleVitrine, bool hasStockageMateriaux, unsigned int identifiant,
+                     Adresse adresse, double prix, double mCarre,
+                     ClientVendeur* refClientVendeur)
     :Bien(identifiant,adresse,prix,mCarre,refClientVendeur)
 {
     this->tailleVitrine=tailleVitrine;

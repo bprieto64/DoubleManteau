@@ -5,7 +5,8 @@ Terrain::Terrain()
 
 }
 
-Terrain::Terrain(bool eC, unsigned int identifiant, string adresse, double prix, double mCarre, ClientVendeur* refClientVendeur)
+Terrain::Terrain(bool eC, unsigned int identifiant, Adresse adresse, double prix,
+                 double mCarre, ClientVendeur* refClientVendeur)
     :Bien(identifiant,adresse,prix,mCarre,refClientVendeur)
 {
     this->estConstructible=eC;

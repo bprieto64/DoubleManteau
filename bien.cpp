@@ -10,7 +10,7 @@ Bien::Bien()
 
 }
 
-Bien::Bien(unsigned int identifiant, string adresse , double prix, double mCarre,ClientVendeur * refClientVendeur)
+Bien::Bien(unsigned int identifiant, Adresse adresse , double prix, double mCarre,ClientVendeur * refClientVendeur)
 {
     this->identifiant=identifiant;
     this->adresse=adresse;
@@ -34,15 +34,15 @@ void Bien::setIdentifiant(unsigned int value)
     identifiant = value;
 }
 
-string Bien::getAdresse() const
+Adresse Bien::getAdresse() const
 {
     return adresse;
 }
 
-void Bien::setAdresse(const string &value)
+/*void Bien::setAdresse(const string &value)
 {
     adresse = value;
-}
+}*/
 
 double Bien::getPrix() const
 {
@@ -70,7 +70,7 @@ void Bien::setCarre(double carre)
 //OTHERS METHODS
  void Bien::afficherTout()
 {
-   cout<<"L'adresse du bien numéro : "<<identifiant<< " est "<<adresse<<"."<<endl;
+   cout<<"L'adresse du bien numéro : "<<identifiant<< " est "<<adresse.getNumRue()<<"."<<endl;
    cout<<"le prix de bien est : "<< prix << " €."<<endl;
    cout<<"Sa superficie est de "<<mCarre<<" m²."<<endl;
    cout<<"Le numéro du vendeur est "<<refClientVendeur->getIdentifiant()<<"." <<endl;

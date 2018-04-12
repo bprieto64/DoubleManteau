@@ -5,7 +5,7 @@ ClientAcheteur::ClientAcheteur()
 
 }
 
-ClientAcheteur::ClientAcheteur(unsigned int identifiant, string nom, string adresse):
+ClientAcheteur::ClientAcheteur(unsigned int identifiant, string nom, Adresse adresse):
     Client(identifiant,nom,adresse)
 {
 

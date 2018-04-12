@@ -143,10 +143,27 @@ void Agence::AjouterBienAVendre(ClientVendeur *cv)
     cout<<identifiant<<endl;
 
     //ajout de l'adresse
-    cout<<"Quel est l'adresse de votre bien ?"<<endl;
-    string adresse;
-
+    cout<<"Quel est numero de rue de votre bien ?"<<endl;
+    //Adresse adresse;
+    int numRue;
     getline(cin,var);
+    numRue=stoi(var);
+
+    cout << "Quel est le nom de rue de votre bien ?" << endl;
+    string nomRue;
+
+    getline(cin,nomRue);
+
+    cout << "Quel est le code postal de votre bien ?" << endl;
+    int cp;
+    getline(cin,var);
+    cp=stoi(var);
+
+    cout << "Quelle est la ville de votre bien ?" << endl;
+    string ville;
+    getline(cin,ville);
+
+    //getline(cin,var);
 
     //ajout du prix
     cout<<"Quel est le prix de votre bien? "<<endl;
@@ -183,7 +200,7 @@ void Agence::AjouterBienAVendre(ClientVendeur *cv)
         getline(cin,var);
         etage=stoul(var);
 
-        cout<<"Combien de pièces possèdent il ? "<<endl;
+        cout<<"Combien de pieces possede t il ? "<<endl;
         unsigned int pieces;
 
         getline(cin,var);
@@ -191,7 +208,7 @@ void Agence::AjouterBienAVendre(ClientVendeur *cv)
 
         var="0";
         do{
-            cout<<"Votre appartement possède il un garage ? "<<endl;
+            cout<<"Votre appartement possede t il un garage ? "<<endl;
             cout<<"(1) oui"<<endl;
             cout<<"(2) non"<<endl;
 
@@ -214,7 +231,7 @@ void Agence::AjouterBienAVendre(ClientVendeur *cv)
 
         var="0";
         do{
-            cout<<"Votre appartement possède il une cave ? "<<endl;
+            cout<<"Votre appartement possede t il une cave ? "<<endl;
             cout<<"(1) oui"<<endl;
             cout<<"(2) non"<<endl;
 
@@ -232,7 +249,7 @@ void Agence::AjouterBienAVendre(ClientVendeur *cv)
         }
         var="0";
         do{
-            cout<<"Votre appartement possède il un balcon ? "<<endl;
+            cout<<"Votre appartement possede t il un balcon ? "<<endl;
             cout<<"(1) oui"<<endl;
             cout<<"(2) non"<<endl;
             getline(cin,var);
@@ -250,7 +267,7 @@ void Agence::AjouterBienAVendre(ClientVendeur *cv)
         }
 
 
-        Appartement *ap = new Appartement(pieces,etage,hasGarage,hasCave,hasBalcon,identifiant,adresse,prix,mCarre,cv);
+        Appartement *ap = new Appartement(pieces,etage,hasGarage,hasCave,hasBalcon,identifiant,Adresse(numRue,nomRue,cp,ville),prix,mCarre,cv);
         ajouterNouveauBien(ap);
 
         for(unsigned int i=0;i<biens.size();i++){
@@ -260,14 +277,14 @@ void Agence::AjouterBienAVendre(ClientVendeur *cv)
     }
     else if(var=="2"){ //Une maison
         var="0";
-        cout<<"Combien de  pièces possèdent la maison  ?"<< endl;
+        cout<<"Combien de  pieces possedent la maison  ?"<< endl;
         unsigned int nbrPieces;
         getline(cin,var);
         nbrPieces=stoul(var);
 
         var="0";
         do{
-            cout<<"Votre Maison possède il un garage ? "<<endl;
+            cout<<"Votre Maison possede il un garage ? "<<endl;
             cout<<"(1) oui"<<endl;
             cout<<"(2) non"<<endl;
 
@@ -288,7 +305,7 @@ void Agence::AjouterBienAVendre(ClientVendeur *cv)
 
         var="0";
         do{
-            cout<<"Votre Maison possède il un jardin ? "<<endl;
+            cout<<"Votre Maison possede il un jardin ? "<<endl;
             cout<<"(1) oui"<<endl;
             cout<<"(2) non"<<endl;
 
@@ -306,7 +323,7 @@ void Agence::AjouterBienAVendre(ClientVendeur *cv)
         }
         var="0";
         do{
-            cout<<"Votre maison possède il une piscine  ? "<<endl;
+            cout<<"Votre maison possede il une piscine  ? "<<endl;
             cout<<"(1) oui"<<endl;
             cout<<"(2) non"<<endl;
             getline(cin,var);
@@ -323,7 +340,7 @@ void Agence::AjouterBienAVendre(ClientVendeur *cv)
             hasPisine =false;
         }
 
-        Maison *mz = new Maison(nbrPieces,hasGarage,hasJardin,hasPisine,identifiant,adresse,prix,mCarre,cv);
+        Maison *mz = new Maison(nbrPieces,hasGarage,hasJardin,hasPisine,identifiant,Adresse(numRue,nomRue,cp,ville),prix,mCarre,cv);
         ajouterNouveauBien(mz);
 
     }
@@ -348,7 +365,7 @@ void Agence::AjouterBienAVendre(ClientVendeur *cv)
             isConstructible =false;
         }
 
-        Terrain *tr = new Terrain(isConstructible,identifiant,adresse,prix,mCarre,cv);
+        Terrain *tr = new Terrain(isConstructible,identifiant,Adresse(numRue,nomRue,cp,ville),prix,mCarre,cv);
         ajouterNouveauBien(tr);
     }
 
@@ -361,7 +378,7 @@ void Agence::AjouterBienAVendre(ClientVendeur *cv)
         tailleVitrine=stod(var);
 
         do{
-            cout<<"Est ce que vous avez une pièce dédié au stockage des matériaux? "<<endl;
+            cout<<"Est ce que vous avez une piece dédie au stockage des materiaux? "<<endl;
             cout<<"(1) oui"<<endl;
             cout<<"(2) non"<<endl;
 
@@ -378,7 +395,7 @@ void Agence::AjouterBienAVendre(ClientVendeur *cv)
             hasStockMat =false;
         }
 
-        LocauxPro *lc = new LocauxPro(tailleVitrine,hasStockMat,identifiant,adresse,prix,mCarre,cv);
+        LocauxPro *lc = new LocauxPro(tailleVitrine,hasStockMat,identifiant,Adresse(numRue,nomRue,cp,ville),prix,mCarre,cv);
         ajouterNouveauBien(lc);
 
     }

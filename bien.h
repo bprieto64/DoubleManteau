@@ -9,7 +9,7 @@ class Bien
 
 protected:
     unsigned int  identifiant; // tester identifiant non nul
-    string adresse; // créer adresse en classe ?
+    Adresse adresse; // créer adresse en classe ?
     double prix;
     double mCarre;
     ClientVendeur* refClientVendeur;
@@ -18,12 +18,12 @@ protected:
 
 public:
     Bien();
-    Bien(unsigned int identifiant, string adresse , double prix, double mCarre,ClientVendeur * refClientVendeur);
+    Bien(unsigned int identifiant, Adresse adresse , double prix, double mCarre,ClientVendeur * refClientVendeur);
 
     unsigned int getIdentifiant() const;
     void setIdentifiant(unsigned int value);
 
-    string getAdresse() const;
+    Adresse getAdresse() const;
     void setAdresse(const string &value);
 
     double getPrix() const;

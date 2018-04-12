@@ -1,6 +1,7 @@
 #ifndef CLIENTVENDEUR_H
 #define CLIENTVENDEUR_H
 #include "client.h"
+#include "adresse.h"
 #include <vector>
 class Bien;
 
@@ -10,7 +11,7 @@ private :
 
 public:
     ClientVendeur();
-    ClientVendeur(unsigned int identifiant, string adresse, string nom);
+    ClientVendeur(unsigned int identifiant, string nom, Adresse adresse);
     std::vector <Bien*> mesbiens;
 
     std::vector<Bien *> getMesbiens() const;

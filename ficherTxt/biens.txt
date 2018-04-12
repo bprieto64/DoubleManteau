@@ -1,0 +1,8 @@
+/INSTRUCTIONS
+/Les lignes commençant par un / ne seront pas prises en compte par le programme
+/Pour ajouter un bien, renseigner comme suit
+/
+/si ajout maison : type=m : type|id|numRue|nomRue|ville|codePostal|prix|mCarre|nbPiece|garage|jardin|piscine
+/si ajout appartement type=a : type|id|numRue|nomRue|ville|codePostal|prix|mCarre|nbPiece|etage|garage|cave|balcon
+/si ajout local pro : type =l : type|id|numRue|nomRue|ville|codePostal|prix|mCarre|tailleVitrine|stockageMateriel
+/si ajout terrain : type=t : type|id|numRue|nomRue|ville|codePostal|prix|mCarre|constructible

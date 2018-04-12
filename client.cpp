@@ -8,11 +8,11 @@ Client::Client()
     
 }
 
-Client::Client(unsigned int identifiant,string nom, string adresse)
+Client::Client(unsigned int identifiant,string nom, Adresse a)
 {
     this->identifiant=identifiant;
     this->nom=nom;
-    this->adresse=adresse;
+    this->adresse=a;
 }
 
 //GETTERS AND SETTERS
@@ -39,15 +39,15 @@ void Client::setNom(const string &value)
     nom = value;
 }
 
-string Client::getAdresse() const
+Adresse Client::getAdresse() const
 {
     return adresse;
 }
 
-void Client::setAdresse(const string &value)
+/*void Client::setAdresse(const Adresse &value)
 {
     adresse = value;
-}
+}*/
 
 
 

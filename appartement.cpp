@@ -8,7 +8,9 @@ Appartement::Appartement()
 
 }
 
-Appartement::Appartement(unsigned int nbrPieces, unsigned int etage, bool hasGarage, bool hasCave, bool hasBalcon, unsigned int identifiant, string adresse, double prix, double mCarre,ClientVendeur *refClientVendeur)
+Appartement::Appartement(unsigned int nbrPieces, unsigned int etage, bool hasGarage,
+                         bool hasCave, bool hasBalcon, unsigned int identifiant, Adresse adresse,
+                         double prix, double mCarre, ClientVendeur *refClientVendeur)
     :Bien(identifiant,adresse,prix,mCarre,refClientVendeur)
 {
     this->nbrPieces=nbrPieces;

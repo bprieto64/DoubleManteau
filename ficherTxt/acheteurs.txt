@@ -1,0 +1,4 @@
+/INSTRUCTIONS
+/Les lignes commençant par un / ne seront pas prises en compte par le programme
+/Pour ajouter un acheteur
+/id|nom|numRue|nomRue|ville|cp

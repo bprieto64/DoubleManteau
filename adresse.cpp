@@ -1,15 +1,16 @@
 #include "adresse.h"
 
 
-
 Adresse::Adresse(unsigned int numRue, string nomRue, unsigned int codePostal, string ville)
 {
     this->numRue=numRue;
     this->nomRue=nomRue;
     this->codePostal=codePostal;
     this->ville=ville;
+}
 
-
+void Adresse::afficher(){
+    cout << this->numRue << " " << this->nomRue << " " << this->ville << " " << this->codePostal << endl;
 }
 
 unsigned int Adresse::getNumRue() const

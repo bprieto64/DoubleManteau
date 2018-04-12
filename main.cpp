@@ -14,16 +14,16 @@ int main(int argc, char *argv[])
 
     QCoreApplication a(argc, argv);
 
-    cout<< "Bienvenue sur la nouvelle application de la société Un toit pour TOUS. "<<endl;
+    cout<< "Bienvenue sur la nouvelle application de la societe Un toit pour TOUS. "<<endl;
     Agence A;
-    ClientVendeur *c=  new ClientVendeur(128,"coucou","kiki");
+    ClientVendeur *c=  new ClientVendeur(128,"coucou", Adresse(1,"rue des acacias",40160,"Ychoux"));
     A.ajouterNouveauClientVendeur(*c);
-    A.ajouterNouveauClientAcheteur(ClientAcheteur(129,"rue des palmiers","xakura"));
+    A.ajouterNouveauClientAcheteur(ClientAcheteur(129,"rue des palmiers",Adresse(2,"chemin de Cabeil",40160,"Ychoux")));
     //ClientVendeur * c=A.isClientExiste(128);
 
 
     //cout<<c->getNom()<<endl;
-    Appartement *appart= new Appartement(2,2,true,true,true,123,"kiki",123,123,c);
+    Appartement *appart= new Appartement(2,2,true,true,true,123,Adresse(99,"chemin des choureuts",40160,"Ychoux"),123,123,c);
     A.ajouterNouveauBien(appart);
 
 
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 
 
         do {
-            cout << "Avant de vendre votre toit ou d'en trouver un, merci de nous dire qui vous êtes?"<<endl;
+            cout << "Avant de vendre votre toit ou d'en trouver un, merci de nous dire qui vous etes?"<<endl;
             cout << "(1) Client vendeur"<<endl;
             cout <<"(2) Client acheteur"<<endl;
 
@@ -67,9 +67,9 @@ int main(int argc, char *argv[])
             var="0";
             do {
 
-                cout<<"(1) Ajouter un bien à vendre."<<endl;
+                cout<<"(1) Ajouter un bien a vendre."<<endl;
                 cout<<"(2) Consulter mes biens a vendre."<<endl;
-                cout<<"(3) Consulter mes offres d'achats."<<endl;
+                cout<<"(3) Consulter mes offres d achats."<<endl;
 
                 getline(cin,var);
             }

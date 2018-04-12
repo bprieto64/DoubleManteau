@@ -25,6 +25,8 @@ public:
     void setNomRue(const string &value);
     string getVille() const;
     void setVille(const string &value);
+
+    void afficher();
 };
 
 #endif // ADRESSE_H
