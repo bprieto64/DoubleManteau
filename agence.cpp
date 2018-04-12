@@ -250,7 +250,7 @@ void Agence::AjouterBienAVendre(ClientVendeur *cv)
         }
 
 
-        Appartement *ap = new Appartement(pieces,etage,hasGarage,hasCave,hasBalcon,identifiant,adresse,prix,mCarre,*cv);
+        Appartement *ap = new Appartement(pieces,etage,hasGarage,hasCave,hasBalcon,identifiant,adresse,prix,mCarre,cv);
         ajouterNouveauBien(ap);
 
         for(unsigned int i=0;i<biens.size();i++){

@@ -27,10 +27,6 @@ void Client::setIdentifiant(unsigned int value)
     identifiant = value;
 }
 
-void Client::afficher()
-{
-    cout<<"L'identifiant du client est "<<identifiant<<endl;
-}
 
 
 string Client::getNom() const
@@ -56,4 +52,10 @@ void Client::setAdresse(const string &value)
 
 
 //OTHERS METHODS
+
+void Client::afficher()
+{
+    cout<<"L'identifiant du client est "<<identifiant<<endl;
+}
+
 

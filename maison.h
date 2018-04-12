@@ -12,7 +12,7 @@ class Maison : public Bien
     bool hasPiscine;
 public:
     Maison();
-    Maison(unsigned int nbrPieces, bool hasGarage,bool hasJardin,bool hasPiscine,unsigned int identifiant, string adresse , double prix, double mCarre,ClientVendeur refClientVendeur);
+    Maison(unsigned int nbrPieces, bool hasGarage,bool hasJardin,bool hasPiscine,unsigned int identifiant, string adresse , double prix, double mCarre,ClientVendeur * refClientVendeur);
 
 
 

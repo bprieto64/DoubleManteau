@@ -18,7 +18,7 @@ protected:
 
 public:
     Bien();
-    Bien(unsigned int identifiant, string adresse , double prix, double mCarre,ClientVendeur refClientVendeur);
+    Bien(unsigned int identifiant, string adresse , double prix, double mCarre,ClientVendeur * refClientVendeur);
 
     unsigned int getIdentifiant() const;
     void setIdentifiant(unsigned int value);

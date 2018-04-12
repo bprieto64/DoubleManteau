@@ -10,13 +10,13 @@ Bien::Bien()
 
 }
 
-Bien::Bien(unsigned int identifiant, string adresse , double prix, double mCarre,ClientVendeur refClientVendeur)
+Bien::Bien(unsigned int identifiant, string adresse , double prix, double mCarre,ClientVendeur * refClientVendeur)
 {
     this->identifiant=identifiant;
     this->adresse=adresse;
     this->prix=prix;
     this->mCarre=mCarre;
-    this->refClientVendeur=&refClientVendeur;
+    this->refClientVendeur=refClientVendeur;
 
 }
 //GETTERS AND SETTERS
