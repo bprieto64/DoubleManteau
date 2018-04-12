@@ -9,11 +9,12 @@ class Bien
 
 protected:
     unsigned int  identifiant; // tester identifiant non nul
-    Adresse adresse; // créer adresse en classe ?
+    Adresse adresse;
     double prix;
     double mCarre;
     ClientVendeur* refClientVendeur;
     virtual void afficher()=0;
+
 
 
 public:

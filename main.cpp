@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
     A.ajouterNouveauBien(appart);
 
 
-    A.ajouterNouveauBien(appart);
+
 
 
     string var="10";
@@ -79,6 +79,9 @@ int main(int argc, char *argv[])
 
             if(var=="1"){//ajouter un bien à vendre
             A.AjouterBienAVendre(&cv);
+            }
+            if(var=="2"){
+                A.consulterMesBiensAVendre(&cv);
             }
 
 

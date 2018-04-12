@@ -89,6 +89,15 @@ ClientVendeur Agence::recupererClientVendeur(unsigned int identifiant)
 
 }
 
+void Agence::consulterMesBiensAVendre(ClientVendeur *cv)
+{
+    for(unsigned i=0; i<biens.size();i++){
+      biens[i];
+     //  }
+   }
+
+}
+
 void Agence::ajouterNouveauClientAcheteur(ClientAcheteur client)
 {
     carnetClientsAcheteurs.push_back(client);
