@@ -76,6 +76,7 @@ void Bien::setCarre(double carre)
    cout<<"Sa superficie est de "<<mCarre<<" metres carres."<<endl;
    cout<<"Le numero du vendeur est "<<refClientVendeur->getIdentifiant()<<"." <<endl;
    afficher();
+   cout<<endl;
 }
 
  void Bien::affichageSimple()
@@ -85,5 +86,5 @@ void Bien::setCarre(double carre)
       cout<<"Le prix de bien est : "<< prix << " euros."<<endl;
       cout<<"Sa superficie est de "<<mCarre<<" metres carres."<<endl;
       cout<<"Le numero du vendeur est "<<refClientVendeur->getIdentifiant()<<"." <<endl;
-      cout<<"---------------------------------------------------------"<<endl;
+
   }

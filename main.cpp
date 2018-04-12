@@ -7,6 +7,7 @@
 #include "clientvendeur.h"
 #include "clientacheteur.h"
 #include "agence.h"
+#include "terrain.h"
 using namespace std;
 
 int main(int argc, char *argv[])
@@ -18,6 +19,7 @@ int main(int argc, char *argv[])
     Agence A;
     ClientVendeur *c=  new ClientVendeur(128,"coucou", Adresse(1,"rue des acacias",40160,"Ychoux"));
     A.ajouterNouveauClientVendeur(*c);
+    ClientVendeur *iencli=  new ClientVendeur(158,"michel", Adresse(6,"boulevard victor hugo",40160,"Bias"));
     A.ajouterNouveauClientAcheteur(ClientAcheteur(129,"rue des palmiers",Adresse(2,"chemin de Cabeil",40160,"Ychoux")));
     //ClientVendeur * c=A.isClientExiste(128);
 
@@ -29,6 +31,11 @@ int main(int argc, char *argv[])
     Maison *m = new Maison(5,true,true,true,3,Adresse(24,"chemin d'Usta",64480,"Ustaritz"),127.5,2,c);
     A.ajouterNouveauBien(m);
 
+    Terrain * rrainte=new Terrain(true,125121244,Adresse(18,"rue de la victoire",33000,"Bordeaux"),12500,1256,iencli);
+    A.ajouterNouveauBien(rrainte);
+
+
+
     string var="10";
     while(1==1){
 
@@ -39,8 +46,6 @@ int main(int argc, char *argv[])
             cout <<"(2) Client acheteur"<<endl;
 
             getline(cin,var);
-
-            cout<<var<<endl;
 
 
         }
@@ -75,10 +80,30 @@ int main(int argc, char *argv[])
 
 
             if(var=="1"){//ajouter un bien à vendre
-            A.AjouterBienAVendre(&cv);
+                A.AjouterBienAVendre(&cv);
             }
+            if(var=="2"){
+                var="0";
+                A.consulterMesBiensAVendre(&cv);
+
+                do{
+                    cout << "Voulez-vous consulter les details d'une offre ?" << endl;
+                    cout<<"(1) Oui"<<endl;
+                    cout<<"(2) Non"<<endl;
+
+                    getline(cin,var);
+                }
+                while(var != "1" && var!="2");
+
+                if(var=="1"){
+                    cout << "De quel bien voulez-vous consulter les details ?" << endl;
+                    getline(cin,var);
+                    int numB=stoi(var);
+                    A.consulterDetailsBien(numB);
+                }
 
 
+            }
         }
         else if(var =="2"){// le client est acheteur
             var="0";
@@ -103,8 +128,9 @@ int main(int argc, char *argv[])
 
             if(var=="1"){
                 A.consulterBien();
-                cout << "Voulez-vous consulter les details d'une offre ?" << endl;
+                var="0";
                 do{
+                    cout << "Voulez-vous consulter les details d'une offre ?" << endl;
                     cout<<"(1) Oui"<<endl;
                     cout<<"(2) Non"<<endl;
 
@@ -112,13 +138,14 @@ int main(int argc, char *argv[])
                 }
                 while(var != "1" && var!="2");
                 if(var=="1"){
-                   cout << "De quel bien voulez-vous consulter les details ?" << endl;
-                   getline(cin,var);
-                   int numB=stoi(var);
-                   A.consulterDetailsBien(numB);
+                    cout << "De quel bien voulez-vous consulter les details ?" << endl;
+                    getline(cin,var);
+                    int numB=stoi(var);
+                    A.consulterDetailsBien(numB);
                 }
             }
         }
+
     }
 
     return a.exec();

@@ -33,6 +33,7 @@ public:
     void supprimerClientVendeur(unsigned int identifiant);
     bool isClientExisteV(unsigned int identifiant);
     ClientVendeur recupererClientVendeur(unsigned int identifiant);
+    void consulterMesBiensAVendre(ClientVendeur * cv);
 
     void ajouterNouveauClientAcheteur(ClientAcheteur client);
     void supprimerClientAcheteur(unsigned int identifiant);

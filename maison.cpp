@@ -63,15 +63,15 @@ void Maison::setNbrPieces(unsigned int value)
 
 void Maison::afficher()
 {
-    cout<<"La maison possède "<<nbrPieces<< " pièces."<<endl;
+    cout<<"La maison possede "<<nbrPieces<< " pieces."<<endl;
     if(hasGarage){
-        cout<<"La maison possède un garage."<<endl;
+        cout<<"La maison possede un garage."<<endl;
     }
     if(hasPiscine){
-        cout<<"L'Appartement possède une piscine."<<endl;
+        cout<<"L'Appartement possede une piscine."<<endl;
     }
     if(hasJardin){
-        cout<<"L'Appartement possède un jardin."<<endl;
+        cout<<"L'Appartement possede un jardin."<<endl;
     }
 
 }

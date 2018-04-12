@@ -2,7 +2,10 @@
 
 using namespace std;
 
+Agence::Agence()
+{
 
+}
 
 std::vector<Bien*> Agence::getBiens() const
 {
@@ -13,6 +16,7 @@ void Agence::consulterBien(){
     for(unsigned i=0; i<biens.size();i++){
         cout << "(" << i << ")";
         biens[i]->affichageSimple();
+         cout<<"---------------------------------------------------------"<<endl;
     }
 }
 
@@ -20,11 +24,20 @@ void Agence::consulterDetailsBien(int ienb){
     biens[ienb]->afficherTout();
 }
 
-Agence::Agence()
+
+void Agence::consulterMesBiensAVendre(ClientVendeur *cv)
 {
 
-}
+    for(unsigned i=0; i<biens.size();i++){
+         if(biens[i]->getRefClientVendeur()->getIdentifiant()==cv->getIdentifiant()){
+             cout << "(" << i << ")";
+         biens[i]->affichageSimple();
+         cout<<"---------------------------------------------------------"<<endl;
+         }
+     }
 
+
+}
 std::vector<ClientVendeur> Agence::getCarnetClientsVendeurs() const
 {
     return carnetClientsVendeurs;
