@@ -24,6 +24,7 @@ public:
     void setHasPiscine(bool value);
     unsigned int getNbrPieces() const;
     void setNbrPieces(unsigned int value);
+    void afficher();
 };
 
 #endif // MAISON_H

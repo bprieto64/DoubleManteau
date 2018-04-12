@@ -71,7 +71,7 @@ void Appartement::setEtage(unsigned int value)
 void Appartement::afficher()
 {
     cout<<"L'appartement possède "<<nbrPieces<< " pièces."<<endl;
-    cout<<"Il est situé au "<<etage<<" étage."<<endl;
+    cout<<"Il est situé à l'étage numéro "<<etage<<endl;
     if(hasGarage){
         cout<<"L'Appartement possède un garage."<<endl;
     }

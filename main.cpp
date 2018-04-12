@@ -20,14 +20,11 @@ int main(int argc, char *argv[])
     A.ajouterNouveauClientVendeur(*c);
     A.ajouterNouveauClientAcheteur(ClientAcheteur(129,"rue des palmiers","xakura"));
     //ClientVendeur * c=A.isClientExiste(128);
-    // A.ajouterNouveauBien(Appartement(1,"rue des pisicne",12,12,c));
+
 
     //cout<<c->getNom()<<endl;
     Appartement *appart= new Appartement(2,2,true,true,true,123,"kiki",123,123,c);
     A.ajouterNouveauBien(appart);
-    for(unsigned int i=0;i<A.getBiens().size();i++){
-        A.getBiens()[i]->afficherTout();
-    }
 
 
     A.ajouterNouveauBien(appart);

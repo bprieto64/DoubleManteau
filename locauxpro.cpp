@@ -34,5 +34,13 @@ void LocauxPro::setHasStockageMateriaux(bool value)
     hasStockageMateriaux = value;
 }
 
+void LocauxPro::afficher()
+{
+    cout<<"La taille de la vitrine est de "<<tailleVitrine<<" mètres"<<endl;
+    if(hasStockageMateriaux){
+        cout<<"Le local professionnel piossède une pièce afin de stocker les matériaux."<<endl;
+    }
+}
+
 //OTHERS METHODS
 

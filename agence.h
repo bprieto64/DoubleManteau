@@ -10,6 +10,9 @@
 #include <iostream>
 #include <string>
 #include "appartement.h"
+#include "maison.h"
+#include "terrain.h"
+#include "locauxpro.h"
 
 
 class Agence

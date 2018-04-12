@@ -18,3 +18,10 @@ bool Terrain::getEstConstructible(){
 void Terrain::setEstConstructible(bool constructible){
     this->estConstructible=constructible;
 }
+
+void Terrain::afficher()
+{
+    if(estConstructible){
+        cout<<"Le terrain est constructible"<<endl;
+    }
+}

@@ -14,6 +14,7 @@ public:
 
     bool getEstConstructible();
     void setEstConstructible(bool);
+    void afficher();
 };
 
 #endif // TERRAIN_H

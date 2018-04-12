@@ -15,6 +15,7 @@ public:
     void setTailleVitrine(double value);
     bool getHasStockageMateriaux() const;
     void setHasStockageMateriaux(bool value);
+    void afficher();
 };
 
 #endif // LOCAUXPRO_H

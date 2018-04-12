@@ -200,10 +200,10 @@ void Agence::AjouterBienAVendre(ClientVendeur *cv)
         }while(var != "1" && var !="2");
 
         bool hasGarage;
+
         if(var=="1"){
             hasGarage=true;
 
-            getline(cin,var);
 
         }
         else{
@@ -257,6 +257,133 @@ void Agence::AjouterBienAVendre(ClientVendeur *cv)
             biens[i]->afficherTout();
         }
 
+    }
+    else if(var=="2"){ //Une maison
+        var="0";
+        cout<<"Combien de  pièces possèdent la maison  ?"<< endl;
+        unsigned int nbrPieces;
+        getline(cin,var);
+        nbrPieces=stoul(var);
+
+        var="0";
+        do{
+            cout<<"Votre Maison possède il un garage ? "<<endl;
+            cout<<"(1) oui"<<endl;
+            cout<<"(2) non"<<endl;
+
+            getline(cin,var);
+
+        }while(var != "1" && var !="2");
+
+        bool hasGarage;
+
+        if(var=="1"){
+            hasGarage=true;
+
+
+        }
+        else{
+            hasGarage =false;
+        }
+
+        var="0";
+        do{
+            cout<<"Votre Maison possède il un jardin ? "<<endl;
+            cout<<"(1) oui"<<endl;
+            cout<<"(2) non"<<endl;
+
+            getline(cin,var);
+
+        }while(var != "1" && var !="2");
+
+        bool hasJardin;
+        if(var=="1"){
+            hasJardin=true;
+
+        }
+        else{
+            hasJardin =false;
+        }
+        var="0";
+        do{
+            cout<<"Votre maison possède il une piscine  ? "<<endl;
+            cout<<"(1) oui"<<endl;
+            cout<<"(2) non"<<endl;
+            getline(cin,var);
+
+
+        }while(var != "1" && var !="2");
+
+        bool hasPisine;
+        if(var=="1"){
+            hasPisine=true;
+
+        }
+        else{
+            hasPisine =false;
+        }
+
+        Maison *mz = new Maison(nbrPieces,hasGarage,hasJardin,hasPisine,identifiant,adresse,prix,mCarre,cv);
+        ajouterNouveauBien(mz);
+
+    }
+
+    else if(var=="3"){//terrain
+        var="0";
+        do{
+            cout<<"Votre terrain est il constructible? "<<endl;
+            cout<<"(1) oui"<<endl;
+            cout<<"(2) non"<<endl;
+
+            getline(cin,var);
+
+        }while(var != "1" && var !="2");
+
+        bool isConstructible;
+        if(var=="1"){
+            isConstructible=true;
+
+        }
+        else{
+            isConstructible =false;
+        }
+
+        Terrain *tr = new Terrain(isConstructible,identifiant,adresse,prix,mCarre,cv);
+        ajouterNouveauBien(tr);
+    }
+
+    else if(var=="4"){
+        var="0";
+        cout<<"Quelle est la taille de votre vitrine? (en metres)"<<endl;
+        double tailleVitrine;
+
+        getline(cin,var);
+        tailleVitrine=stod(var);
+
+        do{
+            cout<<"Est ce que vous avez une pièce dédié au stockage des matériaux? "<<endl;
+            cout<<"(1) oui"<<endl;
+            cout<<"(2) non"<<endl;
+
+            getline(cin,var);
+
+        }while(var != "1" && var !="2");
+
+        bool hasStockMat;
+        if(var=="1"){
+            hasStockMat=true;
+
+        }
+        else{
+            hasStockMat =false;
+        }
+
+        LocauxPro *lc = new LocauxPro(tailleVitrine,hasStockMat,identifiant,adresse,prix,mCarre,cv);
+        ajouterNouveauBien(lc);
+
+    }
+    for(unsigned int i=0;i<biens.size();i++){
+        biens[i]->afficherTout();
     }
 
 
