@@ -106,6 +106,7 @@ void Agence::consulterMesOffresAchats(ClientVendeur *cv)
 void Agence::consulteReponseOffreAchat(ClientAcheteur *ca)
 {
     string var="0";
+    unsigned count=0;
     for(map<Visite*,ClientAcheteur*>::iterator it =carnetVisites.begin(); it!=carnetVisites.end() ; it++){
         if((it->first->getEtat()=="ACCEPTER" || it->first->getEtat()=="REFUSER" ) && (it->second==ca)){
 
@@ -115,8 +116,8 @@ void Agence::consulteReponseOffreAchat(ClientAcheteur *ca)
 
             if(it->first->getEtat()=="ACCEPTER"){
                 cout<<"Vous etes maintenant l'heureux proprietaire de ce bien, nous vous recontacterons pour la signature du sous-seing de la vente"<<endl;
-
-
+                cout<<"Le bien va etre maintenant supprime de la base de donnees"<<endl;
+                   count++;
             }
 
 
@@ -128,6 +129,9 @@ void Agence::consulteReponseOffreAchat(ClientAcheteur *ca)
             }while(var != "k");
 
         }
+    }
+    for(int i=0;i<count;i++){
+        supprimerVisiteEtBien(ca);
     }
 
 }
@@ -190,6 +194,135 @@ void Agence::creerClient()
 
 }
 
+void Agence::afficherCategorieBiens()
+{
+    string var="0";
+    string var2="0";
+   unsigned  int bInf=0;
+   unsigned int bSup=99999999;
+    do{
+        cout<<"Quel type de bien voulait vous afficher?"<<endl;
+        cout<<"(1) Appartement"<<endl;
+        cout<<"(2) Maison"<<endl;
+        cout<<"(3) Local professionnel"<<endl;
+        cout<<"(4) Terrain"<<endl;
+        getline(cin,var);
+
+
+    }while(var != "1" && var!="2" && var!="3" && var!="4");
+
+    do{
+       cout<<"Voulez vous choisir une gamme de prix ? ( Les prix pouvant etre negocie avec le vendeur)"<<endl;
+       cout<<"(1) Oui"<<endl;
+       cout<<"(2) Non"<<endl;
+       getline(cin,var2);
+
+
+
+    }while(var2 != "1" && var2!="2");
+
+    if(var2=="1"){
+
+        cout<<"Merci de preciser la borne inferieur."<<endl;
+        getline(cin,var2);
+        bInf=stoul(var2);
+        var2="0";
+
+
+        cout<<"Merci de preciser la borne superieur."<<endl;
+        getline(cin,var2);
+        bSup=stoul(var2);
+
+        if(var=="1"){
+            afficherCategorieBiensEtPrix("a",bInf,bSup);
+
+        }
+        else if(var=="2"){
+            afficherCategorieBiensEtPrix("m",bInf,bSup);
+
+        }
+        else if(var=="3"){
+            afficherCategorieBiensEtPrix("l",bInf,bSup);
+
+        }
+        else if(var=="4"){
+            afficherCategorieBiensEtPrix("t",bInf,bSup);
+
+        }
+
+
+    }
+    else if(var2=="2"){
+        if(var=="1"){
+            afficherCategorieBiensEtPrix("a",bInf,bSup);
+
+        }
+        else if(var=="2"){
+            afficherCategorieBiensEtPrix("m",bInf,bSup);
+
+        }
+        else if(var=="3"){
+            afficherCategorieBiensEtPrix("l",bInf,bSup);
+
+        }
+        else if(var=="4"){
+            afficherCategorieBiensEtPrix("t",bInf,bSup);
+
+        }
+
+    }
+
+
+
+
+
+}
+
+void Agence::afficherCategorieBiensEtPrix(string cat, unsigned int bInf, unsigned int bSup)
+{
+    if(cat=="m"){
+        for(unsigned i=0; i<biens.size();i++){
+            if(biens[i] ==dynamic_cast<Maison*>(biens[i]) && biens[i]->getPrix()>bInf && biens[i]->getPrix()<bSup ){
+                cout << "(" << i << ")";
+                biens[i]->affichageSimple();
+                cout<<"---------------------------------------------------------"<<endl;
+            }
+        }
+
+    }
+    else if(cat=="a"){
+        for(unsigned i=0; i<biens.size();i++){
+            if(biens[i] ==dynamic_cast<Appartement*>(biens[i]) && biens[i]->getPrix()>bInf && biens[i]->getPrix()<bSup ){
+                cout << "(" << i << ")";
+                biens[i]->affichageSimple();
+                cout<<"---------------------------------------------------------"<<endl;
+            }
+        }
+    }
+    else if(cat=="l"){
+        for(unsigned i=0; i<biens.size();i++){
+            if(biens[i] ==dynamic_cast<LocauxPro*>(biens[i]) && biens[i]->getPrix()>bInf && biens[i]->getPrix()<bSup ){
+                cout << "(" << i << ")";
+                biens[i]->affichageSimple();
+                cout<<"---------------------------------------------------------"<<endl;
+            }
+        }
+
+    }
+    else if(cat =="t"){
+        for(unsigned i=0; i<biens.size();i++){
+            if(biens[i] ==dynamic_cast<Terrain*>(biens[i]) && biens[i]->getPrix()>bInf && biens[i]->getPrix()<bSup ){
+                cout << "(" << i << ")";
+                biens[i]->affichageSimple();
+                cout<<"---------------------------------------------------------"<<endl;
+            }
+        }
+
+
+    }
+
+}
+
 
 void Agence::consulterMesBiensAVendre(ClientVendeur *cv)
 {
@@ -221,7 +354,7 @@ void Agence::ajouterNouvelleVisite(ClientAcheteur *clientAcheteur, Visite *visit
     carnetVisites.insert(pair<Visite*,ClientAcheteur*>(visite,clientAcheteur));
 }
 
-void Agence::supprimerVisite(ClientAcheteur *clientAcheteur, double propAchat,unsigned int identifiant) // A TESTER:  PAS SUR DU TOUT
+void Agence::supprimerVisite(ClientAcheteur *clientAcheteur, double propAchat,unsigned int identifiant)
 {
 
     for(map<Visite*,ClientAcheteur*>::iterator it =carnetVisites.begin(); it!=carnetVisites.end() ; it++){
@@ -232,6 +365,23 @@ void Agence::supprimerVisite(ClientAcheteur *clientAcheteur, double propAchat,un
         }
     }
 }
+void Agence::supprimerVisiteEtBien(ClientAcheteur *clientAcheteur)
+{
+
+    for(map<Visite*,ClientAcheteur*>::iterator it =carnetVisites.begin(); it!=carnetVisites.end() ; it++){
+        if((clientAcheteur==(it->second)) && it->first->getEtat()=="ACCEPTER"){
+            carnetVisites.erase(it);
+              for(vector<Bien*>::iterator i = biens.begin();i !=biens.end() ; i++){
+                  if(*i==it->first->getBien()){
+                      biens.erase(i);
+                  }
+               }
+
+        break;
+        }
+    }
+}
+
 
 
 void Agence::ajouterNouveauClientVendeur(ClientVendeur client)

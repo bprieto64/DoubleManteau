@@ -30,6 +30,7 @@ public:
 
     void ajouterNouvelleVisite(ClientAcheteur *clientAcheteur,Visite *visite);
     void supprimerVisite(ClientAcheteur *clientAcheteur,double propAchat, unsigned int identifiant);
+    void supprimerVisiteEtBien(ClientAcheteur *clientAcheteur);
 
     void ajouterNouveauClientVendeur(ClientVendeur client);
     void supprimerClientVendeur(unsigned int identifiant);
@@ -51,7 +52,8 @@ public:
    void consulterMesOffresAchats(ClientVendeur *cv);
    void consulteReponseOffreAchat(ClientAcheteur *ca);
    void creerClient();
-
+   void afficherCategorieBiens();
+   void afficherCategorieBiensEtPrix(string cat,unsigned int bInf,unsigned int bSup);
 
 
 
