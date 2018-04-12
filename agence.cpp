@@ -382,10 +382,6 @@ void Agence::AjouterBienAVendre(ClientVendeur *cv)
         ajouterNouveauBien(lc);
 
     }
-    for(unsigned int i=0;i<biens.size();i++){
-        biens[i]->afficherTout();
-    }
-
 
 }
 
