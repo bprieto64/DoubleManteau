@@ -126,7 +126,7 @@ int main(int argc, char *argv[])
 
             do{
                 cout<<"(1) Consulter les biens."<<endl;
-                cout<<"(2) Consulter mes propositions d achat."<<endl;
+                cout<<"(2) Consulter les resultats de mes propositions d'achats."<<endl;
 
                 getline(cin,var);
             }
@@ -168,6 +168,9 @@ int main(int argc, char *argv[])
                         retour=true;
                     }
                 }
+            }
+            else if(var=="2"){
+                A.consulteReponseOffreAchat(&ca);
             }
         }
 

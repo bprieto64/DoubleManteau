@@ -2,6 +2,13 @@
 
 using namespace std;
 
+std::map<Visite *, ClientAcheteur *> Agence::getCarnetVisites() const
+{
+    return carnetVisites;
+}
+
+
+
 Agence::Agence()
 {
 
@@ -16,7 +23,7 @@ void Agence::consulterBien(){
     for(unsigned i=0; i<biens.size();i++){
         cout << "(" << i << ")";
         biens[i]->affichageSimple();
-         cout<<"---------------------------------------------------------"<<endl;
+        cout<<"---------------------------------------------------------"<<endl;
     }
 }
 
@@ -45,14 +52,15 @@ void Agence::faireVisite(ClientAcheteur *ca,int identifiant)
     }while(var != "1" && var !="2");
 
     if(var=="1"){//veut faire une offre d'achat
-                cout<<"Quel est le montant de votre offre d'achat? ( en euros)"<<endl;
-                double offreAchat=0;
-                getline(cin,var);
-               offreAchat=stod(var);
-           carnetVisites.insert(pair<ClientAcheteur*,Visite*>(ca,new Visite(bien,true,offreAchat,"ATTENTE")));
+        cout<<"Quel est le montant de votre offre d'achat? ( en euros)"<<endl;
+        double offreAchat=0;
+        getline(cin,var);
+        offreAchat=stod(var);
+        carnetVisites.insert(make_pair(new Visite(bien,true,offreAchat,"ATTENTE"),ca));
+
     }
-    else if(var=="2"){// pas df'offre d'achat
-          carnetVisites.insert(pair<ClientAcheteur*,Visite*>(ca,new Visite(bien,false,0,"NOETAT")));
+    else if(var=="2"){// pas d'offre d'achat
+        carnetVisites.insert(make_pair(new Visite(bien,false,0,"NOETAT"),ca));
     }
 
 
@@ -60,14 +68,16 @@ void Agence::faireVisite(ClientAcheteur *ca,int identifiant)
 
 void Agence::consulterMesOffresAchats(ClientVendeur *cv)
 {
+
     string var="0";
-    for(map<ClientAcheteur*,Visite*>::iterator it =carnetVisites.begin(); it!=carnetVisites.end() ; it++){
-        if((it->second->getEtat()=="ATTENTE") && (it->second->getBien()->getRefClientVendeur()->getIdentifiant() == cv->getIdentifiant())){
+    for(map<Visite*,ClientAcheteur*>::iterator it =carnetVisites.begin(); it!=carnetVisites.end() ; it++){
 
-            cout<<"La proposition d'achat est de : "<<it->second->getPropAchat()<<" euros"<<endl;
+        if((it->first->getEtat()=="ATTENTE") && (it->first->getBien()->getRefClientVendeur()->getIdentifiant() == cv->getIdentifiant())){
+
+            cout<<"La proposition d'achat est de : "<<it->first->getPropAchat()<<" euros"<<endl;
             cout <<"Elle a ete fait sur le bien suivant"<<endl;
-            it->second->getBien()->affichageSimple();
-
+            it->first->getBien()->affichageSimple();
+            var="0";
             do{
                 cout<<"Souhaitez vous accepter ou refuser cette offre d'achat ? "<<endl;
                 cout<<"(1) Accepter"<<endl;
@@ -77,17 +87,45 @@ void Agence::consulterMesOffresAchats(ClientVendeur *cv)
 
             }while(var != "1" && var !="2");
             if(var=="1"){
-               it->second->setEtat("ACCEPTER");
-            cout<<"Vous avez accepté cette offre d'achat"<<endl;
-            cout<<"Merci d'avoir fait confiance a Un toit pour TOUS"<<endl;
+                it->first->setEtat("ACCEPTER");
+                cout<<"Vous avez accepte cette offre d'achat"<<endl;
+                cout<<"Merci d'avoir fait confiance a Un toit pour TOUS"<<endl;
+                cout<<"L'offre sera supprime de l'application apres visualisation de l'acheteur"<<endl;
+                cout<<endl;
             }
             else if(var=="2"){
-               it->second->setEtat("REFUSER");
-            cout<<"Vous avez refuser cette offre d'achat"<<endl;
+                it->first->setEtat("REFUSER");
+                cout<<"Vous avez refuser cette offre d'achat"<<endl;
+            }
+
+        }
+    }
+
+}
+
+void Agence::consulteReponseOffreAchat(ClientAcheteur *ca)
+{
+    string var="0";
+    for(map<Visite*,ClientAcheteur*>::iterator it =carnetVisites.begin(); it!=carnetVisites.end() ; it++){
+        if((it->first->getEtat()=="ACCEPTER" || it->first->getEtat()=="REFUSER" ) && (it->second==ca)){
+
+            cout<<"Votre offre de "<<it->first->getPropAchat()<<" euros faite sur le bien suivant a ete "<< it->first->getEtat()<<endl;
+            it->first->getBien()->affichageSimple();
+            cout<<endl;
+
+            if(it->first->getEtat()=="ACCEPTER"){
+                cout<<"Vous etes maintenant l'heureux proprietaire de ce bien, nous vous recontacterons pour la signature du sous-seing de la vente"<<endl;
+
 
             }
 
 
+            do{
+                cout<<"Pour passer a votre offre suivante appuye sur la touche : k"<<endl;
+
+                getline(cin,var);
+
+            }while(var != "k");
 
         }
     }
@@ -99,12 +137,12 @@ void Agence::consulterMesBiensAVendre(ClientVendeur *cv)
 {
 
     for(unsigned i=0; i<biens.size();i++){
-         if(biens[i]->getRefClientVendeur()->getIdentifiant()==cv->getIdentifiant()){
-             cout << "(" << i << ")";
-         biens[i]->affichageSimple();
-         cout<<"---------------------------------------------------------"<<endl;
-         }
-     }
+        if(biens[i]->getRefClientVendeur()->getIdentifiant()==cv->getIdentifiant()){
+            cout << "(" << i << ")";
+            biens[i]->affichageSimple();
+            cout<<"---------------------------------------------------------"<<endl;
+        }
+    }
 
 
 }
@@ -122,15 +160,15 @@ std::vector<ClientAcheteur> Agence::getCarnetClientsAcheteurs() const
 
 void Agence::ajouterNouvelleVisite(ClientAcheteur *clientAcheteur, Visite *visite)
 {
-    carnetVisites.insert(pair<ClientAcheteur*,Visite*>(clientAcheteur,visite));
+    carnetVisites.insert(pair<Visite*,ClientAcheteur*>(visite,clientAcheteur));
 }
 
 void Agence::supprimerVisite(ClientAcheteur *clientAcheteur, double propAchat,unsigned int identifiant) // A TESTER:  PAS SUR DU TOUT
 {
 
-    for(map<ClientAcheteur*,Visite*>::iterator it =carnetVisites.begin(); it!=carnetVisites.end() ; it++){
+    for(map<Visite*,ClientAcheteur*>::iterator it =carnetVisites.begin(); it!=carnetVisites.end() ; it++){
 
-        if(((it->second->getBien()->getIdentifiant())==identifiant) && (it->second->getPropAchat())==propAchat && (clientAcheteur==(it->first))  ){
+        if(((it->first->getBien()->getIdentifiant())==identifiant) && (it->first->getPropAchat())==propAchat && (clientAcheteur==(it->second))  ){
             carnetVisites.erase(it);
             break;
         }

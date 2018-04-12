@@ -20,7 +20,7 @@
 class Agence
 {
 private :
-    std::map<ClientAcheteur*,Visite*> carnetVisites;
+    std::map<Visite*,ClientAcheteur*> carnetVisites;
     std::vector<ClientVendeur> carnetClientsVendeurs;
     std::vector<ClientAcheteur> carnetClientsAcheteurs;
     std::vector<Bien*> biens;
@@ -49,8 +49,9 @@ public:
    void consulterDetailsBien(int);
    void faireVisite(ClientAcheteur *ca, int identifiant);
    void consulterMesOffresAchats(ClientVendeur *cv);
+   void consulteReponseOffreAchat(ClientAcheteur *ca);
 
-    std::map<ClientAcheteur *, Visite *> getCarnetVisites() const;
+
 
 
 
@@ -60,6 +61,8 @@ public:
     std::vector<ClientAcheteur> getCarnetClientsAcheteurs() const;
 
     std::vector<Bien*> getBiens() const;
+
+    std::map<Visite *, ClientAcheteur *> getCarnetVisites() const;
 
 };
 
