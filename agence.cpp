@@ -132,6 +132,64 @@ void Agence::consulteReponseOffreAchat(ClientAcheteur *ca)
 
 }
 
+void Agence::creerClient()
+{
+    string var="0";
+    unsigned int identifiant;
+    if(carnetClientsAcheteurs.back().getIdentifiant()>carnetClientsVendeurs.back().getIdentifiant()){
+        identifiant=carnetClientsAcheteurs.back().getIdentifiant()+1;
+    }
+    else{
+        identifiant=carnetClientsVendeurs.back().getIdentifiant()+1;
+    }
+
+    string nom="rien";
+    cout<<"Quel est votre nom ? "<<endl;
+    getline(cin,nom);
+    unsigned int numRue;
+    string nomAdresse;
+    unsigned int codePostal;
+    string ville;
+
+    cout <<"Quel est le numero de votre adresse?"<<endl;
+     getline(cin,var);
+     numRue=stoul(var);
+    cout<<"Quel est l'intitule de votre adresse?"<<endl;
+    getline(cin,nomAdresse);
+    cout<<"Quel est votre code postal?"<<endl;
+    getline(cin,var);
+    codePostal=stoul(var);
+
+    cout<<"Quel est votre ville?"<<endl;
+    getline(cin,ville);
+    var="0";
+
+    do{
+
+        cout<<"Etes vous un client acheteur ou un client vendeur?"<<endl;
+        cout<<"(1) Client acheteur"<<endl;
+        cout<<"(2) Client vendeur"<<endl;
+
+        getline(cin,var);
+
+    } while(var != "1" && var !="2" );
+
+    if(var=="1"){
+        carnetClientsAcheteurs.push_back(ClientAcheteur(identifiant,nom,Adresse(numRue,nomAdresse,codePostal,ville)));
+
+    }
+    else if(var =="2"){
+         carnetClientsVendeurs.push_back(ClientVendeur(identifiant,nom,Adresse(numRue,nomAdresse,codePostal,ville)));
+
+    }
+    cout<<"Compte creer. Bienvenue sur Un toit pour TOUS et bonne chance dans vos projets!"<<endl;
+    cout<<"Votre identifiant de connexion est le : "<<identifiant<<endl;
+    cout<<endl;
+
+
+
+}
+
 
 void Agence::consulterMesBiensAVendre(ClientVendeur *cv)
 {

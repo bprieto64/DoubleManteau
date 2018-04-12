@@ -44,17 +44,19 @@ int main(int argc, char *argv[])
             cout << "Avant de vendre votre toit ou d'en trouver un, merci de nous dire qui vous etes?"<<endl;
             cout << "(1) Client vendeur"<<endl;
             cout <<"(2) Client acheteur"<<endl;
+            cout <<"(3) Creer un compte"<<endl;
 
             getline(cin,var);
 
 
         }
-        while(var != "1" && var !="2");
+        while(var != "1" && var !="2" && var !="3" );
 
 
-        if(var=="1"){
+        if(var=="1"){//le client est un client vendeur
 
-            //le client est un client vendeur
+
+
 
             var="0";
             do {
@@ -65,49 +67,55 @@ int main(int argc, char *argv[])
             while(A.isClientExisteV(stoi(var))!=true);
 
             ClientVendeur cv=A.recupererClientVendeur(stoi(var));
-
-            var="0";
-            do {
-
-                cout<<"(1) Ajouter un bien a vendre."<<endl;
-                cout<<"(2) Consulter mes biens a vendre."<<endl;
-                cout<<"(3) Consulter mes offres d achats."<<endl;
-
-                getline(cin,var);
-            }
-
-            while(var != "1" && var !="2" && var !="3");
-
-
-            if(var=="1"){//ajouter un bien à vendre
-                A.AjouterBienAVendre(&cv);
-            }
-            else if(var=="2"){//Consulter mes biens a vendre
+            while(1==1){
                 var="0";
-                A.consulterMesBiensAVendre(&cv);
-
-                do{
-                    cout << "Voulez-vous consulter les details d'une offre ?" << endl;
-                    cout<<"(1) Oui"<<endl;
-                    cout<<"(2) Non"<<endl;
-
+                do {
+                    cout<<"Que voulez vous faire?"<<endl;
+                    cout<<"(1) Ajouter un bien a vendre."<<endl;
+                    cout<<"(2) Consulter mes biens a vendre."<<endl;
+                    cout<<"(3) Consulter mes offres d achats."<<endl;
+                    cout<<"(4) Deconnexion"<<endl;
                     getline(cin,var);
                 }
-                while(var != "1" && var!="2");
 
-                if(var=="1"){
-                    cout << "De quel bien voulez-vous consulter les details ?" << endl;
-                    getline(cin,var);
-                    int numB=stoi(var);
-                    A.consulterDetailsBien(numB);
+                while(var != "1" && var !="2" && var !="3" && var !="4");
+
+
+                if(var=="1"){//ajouter un bien à vendre
+                    A.AjouterBienAVendre(&cv);
                 }
+                else if(var=="2"){//Consulter mes biens a vendre
+                    var="0";
+                    A.consulterMesBiensAVendre(&cv);
+
+                    do{
+                        cout << "Voulez-vous consulter les details d'une offre ?" << endl;
+                        cout<<"(1) Oui"<<endl;
+                        cout<<"(2) Non"<<endl;
+
+                        getline(cin,var);
+                    }
+                    while(var != "1" && var!="2");
+
+                    if(var=="1"){
+                        cout << "De quel bien voulez-vous consulter les details ?" << endl;
+                        getline(cin,var);
+                        int numB=stoi(var);
+                        A.consulterDetailsBien(numB);
+                    }
 
 
 
 
-            }
-            else if(var=="3"){
-                A.consulterMesOffresAchats(&cv);
+                }
+                else if(var=="3"){
+                    A.consulterMesOffresAchats(&cv);
+
+                }
+                else if(var=="4"){
+                    cout<<"A bientot sur Un toit pour TOUS"<<endl;
+                    break;
+                }
 
             }
         }
@@ -122,19 +130,21 @@ int main(int argc, char *argv[])
 
             ClientAcheteur ca = A.recupererClientAcheteur(stoi(var));
 
-            var="0";
+            while(1==1){
+                var="0";
+                do{
+                    cout<<"Que voulez vous faire?"<<endl;
+                    cout<<"(1) Consulter les biens."<<endl;
+                    cout<<"(2) Consulter les resultats de mes propositions d'achats."<<endl;
+                    cout<<"(3) Deconnexion"<<endl;
 
-            do{
-                cout<<"(1) Consulter les biens."<<endl;
-                cout<<"(2) Consulter les resultats de mes propositions d'achats."<<endl;
+                    getline(cin,var);
+                }
+                while(var != "1" && var!="2" && var!="3");
 
-                getline(cin,var);
-            }
-            while(var != "1" && var!="2");
+                if(var=="1"){
 
-            if(var=="1"){
-                bool retour =false;
-                while(!retour){
+
                     A.consulterBien();
                     var="0";
                     do{
@@ -163,19 +173,28 @@ int main(int argc, char *argv[])
                             A.faireVisite(&ca,numB);
                         }
 
+
                     }
-                    else if (var=="2"){
-                        retour=true;
-                    }
+
+
+
+
                 }
+                else if(var=="2"){
+                    A.consulteReponseOffreAchat(&ca);
+                }
+                else if(var=="3"){
+                    cout<<"A bientot sur Un toit pour TOUS"<<endl;
+                    break;
+                }
+
             }
-            else if(var=="2"){
-                A.consulteReponseOffreAchat(&ca);
-            }
+        }
+        else if(var=="3"){
+            A.creerClient();
         }
 
     }
-
     return a.exec();
 }
 

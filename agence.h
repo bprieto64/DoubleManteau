@@ -50,6 +50,7 @@ public:
    void faireVisite(ClientAcheteur *ca, int identifiant);
    void consulterMesOffresAchats(ClientVendeur *cv);
    void consulteReponseOffreAchat(ClientAcheteur *ca);
+   void creerClient();
 
 
 
