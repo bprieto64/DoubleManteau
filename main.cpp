@@ -39,6 +39,8 @@ int main(int argc, char *argv[])
 
 
 
+
+
     string var="10";
     while(1==1){
 
@@ -76,19 +78,25 @@ int main(int argc, char *argv[])
                 do {
                     cout<<"Que voulez vous faire?"<<endl;
                     cout<<"(1) Ajouter un bien a vendre."<<endl;
-                    cout<<"(2) Consulter mes biens a vendre."<<endl;
-                    cout<<"(3) Consulter mes offres d achats."<<endl;
-                    cout<<"(4) Deconnexion"<<endl;
+                    cout<<"(2) Ajouter un/des bien(s) a vendre a partir d'un fichier."<<endl;
+                    cout<<"(3) Consulter mes biens a vendre."<<endl;
+                    cout<<"(4) Consulter mes offres d achats."<<endl;
+                    cout<<"(5) Deconnexion"<<endl;
                     getline(cin,var);
                 }
 
-                while(var != "1" && var !="2" && var !="3" && var !="4");
+                while(var != "1" && var !="2" && var !="3" && var !="4" && var !="5");
 
 
                 if(var=="1"){//ajouter un bien à vendre
                     A.AjouterBienAVendre(&cv);
                 }
-                else if(var=="2"){//Consulter mes biens a vendre
+                if(var=="2"){//ajouter un bien à vendre via fichier
+                A.AjouterBienViaFichier(&cv);
+
+                }
+
+                else if(var=="3"){//Consulter mes biens a vendre
                     var="0";
                     A.consulterMesBiensAVendre(&cv);
 
@@ -112,11 +120,11 @@ int main(int argc, char *argv[])
 
 
                 }
-                else if(var=="3"){
+                else if(var=="4"){
                     A.consulterMesOffresAchats(&cv);
 
                 }
-                else if(var=="4"){
+                else if(var=="5"){
                     cout<<"A bientot sur Un toit pour TOUS"<<endl;
                     break;
                 }

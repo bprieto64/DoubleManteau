@@ -70,11 +70,12 @@ void Bien::setCarre(double carre)
 //OTHERS METHODS
  void Bien::afficherTout()
 {
-   cout<<"L'adresse du bien numero : "<<identifiant<< " est "<<adresse.getNumRue()<<" "<< adresse.getNomRue()
-         << " " << adresse.getVille() << "."<<endl;
-   cout<<"Le prix de bien est : "<< prix << " euros."<<endl;
-   cout<<"Sa superficie est de "<<mCarre<<" metres carres."<<endl;
-   cout<<"Le numero du vendeur est "<<refClientVendeur->getIdentifiant()<<"." <<endl;
+     cout<<"L'adresse du bien numero : "<<identifiant<< " est "<<adresse.getNumRue()<<" "<< adresse.getNomRue()
+        << " - " << adresse.getCodePostal()<< " "<<adresse.getVille() << "."<<endl;
+      cout<<"Le prix de bien est : "<< prix << " euros."<<endl;
+      cout<<"Sa superficie est de "<<mCarre<<" metres carres."<<endl;
+      cout<<"Le numero du vendeur est "<<refClientVendeur->getIdentifiant()<<"." <<endl;
+
    afficher();
    cout<<endl;
 }
@@ -82,7 +83,7 @@ void Bien::setCarre(double carre)
  void Bien::affichageSimple()
   {
      cout<<"L'adresse du bien numero : "<<identifiant<< " est "<<adresse.getNumRue()<<" "<< adresse.getNomRue()
-           << " - " << adresse.getVille() << "."<<endl;
+        << " - " << adresse.getCodePostal()<< " "<<adresse.getVille() << "."<<endl;
       cout<<"Le prix de bien est : "<< prix << " euros."<<endl;
       cout<<"Sa superficie est de "<<mCarre<<" metres carres."<<endl;
       cout<<"Le numero du vendeur est "<<refClientVendeur->getIdentifiant()<<"." <<endl;

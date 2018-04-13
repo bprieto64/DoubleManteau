@@ -15,6 +15,8 @@
 #include "locauxpro.h"
 #include <chrono>
 #include <thread>
+#include <fstream>
+
 
 
 class Agence
@@ -54,6 +56,8 @@ public:
    void creerClient();
    void afficherCategorieBiens();
    void afficherCategorieBiensEtPrix(string cat,unsigned int bInf,unsigned int bSup);
+   int split(vector<string>& vecteur, string chaine, char separateur);
+   void AjouterBienViaFichier(ClientVendeur *cv);
 
 
 
