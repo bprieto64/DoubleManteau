@@ -245,7 +245,22 @@ int main(int argc, char *argv[])
             }
         }
         else if(var=="3"){
-            A.creerClient();
+            var="0";
+            do {
+                cout << "(1) Creer un nouveau client"<<endl;
+                cout <<"(2) Exporter clients depuis fichiers"<<endl;
+
+                getline(cin,var);
+
+            }
+            while(var != "1" && var !="2");
+            if(var=="1"){
+                A.creerClient();
+            }
+            if(var=="2"){
+                A.ajouterAcheteurViaFichier();
+                A.ajouterVendeurViaFichier();
+            }
         }
 
     }

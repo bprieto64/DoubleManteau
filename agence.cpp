@@ -342,10 +342,83 @@ int Agence::split(vector<string> &vecteur, string chaine, char separateur)
 
 }
 
+void Agence::ajouterAcheteurViaFichier(){
+    ifstream fichier("../DoubleManteau/fichierTxt/acheteurs.txt");
+
+    string ligne;
+    vector<string> vecStr;
+
+    unsigned int id;
+    string nom;
+    unsigned int numRue;
+    string nomRue;
+    unsigned int cp;
+    string ville;
+
+    unsigned int count=0;
+    int nbTabl;
+
+    if(fichier){
+        while (getline(fichier,ligne)) {
+            id=carnetClientsAcheteurs.size()+1;
+            count++;
+
+            nbTabl=split(vecStr,ligne,'|');
+            nom=vecStr[0];
+            numRue=stoul(vecStr[1]);
+            nomRue=vecStr[2];
+            ville=vecStr[3];
+            cp=stoul(vecStr[4]);
+        }
+        ajouterNouveauClientAcheteur(ClientAcheteur(id,nom,Adresse(numRue,nomRue,cp,ville)));
+        cout<<count<< " acheteurs ont ete ajoutes."<<endl;
+        fichier.close();
+    }
+    else
+        cout << "Impossible d'ouvrir le fichier" << endl;
+}
+
+void Agence::ajouterVendeurViaFichier(){
+    ifstream fichier("../DoubleManteau/fichierTxt/vendeurs.txt");
+
+    string ligne;
+    vector<string> vecStr;
+
+    unsigned int id;
+    string nom;
+    unsigned int numRue;
+    string nomRue;
+    unsigned int cp;
+    string ville;
+
+    unsigned int count=0;
+    int nbTabl;
+
+    if(fichier){
+        while (getline(fichier,ligne)) {
+            id=carnetClientsVendeurs.size()+1;
+            count++;
+
+            nbTabl=split(vecStr,ligne,'|');
+            nom=vecStr[0];
+            numRue=stoul(vecStr[1]);
+            nomRue=vecStr[2];
+            ville=vecStr[3];
+            cp=stoul(vecStr[4]);
+        }
+        ajouterNouveauClientVendeur(ClientVendeur(id,nom,Adresse(numRue,nomRue,cp,ville)));
+
+        cout<<count<< " vendeurs ont ete ajoutes."<<endl;
+        fichier.close();
+    }
+    else
+        cout << "Impossible d'ouvrir le fichier" << endl;
+}
+
 void Agence::AjouterBienViaFichier(ClientVendeur *cv)
 {
 
-    ifstream fichier("C:/Users/bapti/Desktop/UnToitPourTous/DoubleManteau/ficherTxt/biens.txt", ios::in);
+    ifstream fichier("../DoubleManteau/fichierTxt/biens.txt", ios::in);
     string ligne="";
     vector<string> VecStr;
 
@@ -449,7 +522,7 @@ void Agence::AjouterBienViaFichier(ClientVendeur *cv)
 
 
         }
-        cout<<count<< " biens ont ete ajoute."<<endl;
+        cout<<count<< " biens ont ete ajoutes."<<endl;
 
 
         fichier.close();
