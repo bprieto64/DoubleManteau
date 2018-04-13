@@ -146,7 +146,7 @@ void Agence::consulterMesBiensAVendre(ClientVendeur *cv)
 }
 
 void Agence::ajouterVendeurViaFichier(){
-    ifstream fichier("C:/Users/bapti/Desktop/UnToitPourTous/DoubleManteau/fichierTxt/vendeurs.txt");
+    ifstream fichier("./fichierTxt/vendeurs.cpp");
 
     string ligne;
     vector<string> vecStr;
@@ -271,7 +271,7 @@ ClientAcheteur Agence::recupererClientAcheteur(unsigned int identifiant)
 }
 
 void Agence::ajouterAcheteurViaFichier(){
-    ifstream fichier("C:/Users/bapti/Desktop/UnToitPourTous/DoubleManteau/fichierTxt/acheteurs.txt");
+    ifstream fichier("./fichierTxt/acheteurs.cpp");
 
     string ligne;
     vector<string> vecStr;
@@ -314,7 +314,7 @@ void Agence::ajouterNouveauBien(Bien * bien)
 void Agence::AjouterBienViaFichier(ClientVendeur *cv)
 {
 
-    ifstream fichier("C:/Users/bapti/Desktop/UnToitPourTous/DoubleManteau/fichierTxt/biens.txt", ios::in);
+    ifstream fichier("./fichierTxt/biens.cpp", ios::in);
     string ligne="";
     vector<string> VecStr;
 

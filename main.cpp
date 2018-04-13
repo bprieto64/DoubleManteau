@@ -15,9 +15,9 @@
 #include <fstream>
 using namespace std;
 
-int main(int argc, char *argv[])
+int main()
 {
-    QCoreApplication a(argc, argv);
+
 
     cout<< "Bienvenue sur la nouvelle application de la societe Un toit pour TOUS. "<<endl;
     Agence A;
@@ -231,7 +231,7 @@ int main(int argc, char *argv[])
             }
         }
     }
-    return a.exec();
+    return 0;
 }
 
 
