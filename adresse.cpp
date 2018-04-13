@@ -1,5 +1,11 @@
 #include "adresse.h"
 
+//CONSTRUCTEURS
+
+Adresse::Adresse()
+{
+
+}
 
 Adresse::Adresse(unsigned int numRue, string nomRue, unsigned int codePostal, string ville)
 {
@@ -9,9 +15,7 @@ Adresse::Adresse(unsigned int numRue, string nomRue, unsigned int codePostal, st
     this->ville=ville;
 }
 
-void Adresse::afficher(){
-    cout << this->numRue << " " << this->nomRue << " " << this->ville << " " << this->codePostal << endl;
-}
+//GETTERS ET SETTERS
 
 unsigned int Adresse::getNumRue() const
 {
@@ -53,7 +57,8 @@ void Adresse::setVille(const string &value)
     ville = value;
 }
 
-Adresse::Adresse()
-{
+//Autres méthodes
 
+void Adresse::afficher(){
+    cout << this->numRue << " " << this->nomRue << " " << this->ville << " " << this->codePostal << endl;
 }

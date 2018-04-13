@@ -1,3 +1,8 @@
+/* Cette application a été developpé dans le cadre du projet de MIAGe de programmation orientée objet
+ * Il est l'oeuvre de 4 étudiants : Farid Ait Ouakli, Anthony Labat, Clément Castagnède et Baptiste Prieto
+ * Date de dernière modfication : 13/04/2018 à 16h
+ */
+
 #include <QCoreApplication>
 #include "iostream"
 #include "bien.h"

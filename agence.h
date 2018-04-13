@@ -1,6 +1,5 @@
 #ifndef AGENCE_H
 #define AGENCE_H
-
 #include "clientacheteur.h"
 #include "visite.h"
 #include "client.h"
@@ -28,50 +27,65 @@ private :
     std::vector<Bien*> biens;
 
 public:
+    //GETTERS and SETTERS
+    std::vector<ClientVendeur> getCarnetClientsVendeurs() const;
+    std::vector<ClientAcheteur> getCarnetClientsAcheteurs() const;
+    std::vector<Bien*> getBiens() const;
+    std::map<Visite *, ClientAcheteur *> getCarnetVisites() const;
+
+    //CONSTRUCTEUR
+
     Agence();
+    //Visites
+    void ajouterNouvelleVisite(ClientAcheteur *clientAcheteur,Visite *visite); //Permet d'ajouter une nouvelle visite
+    void supprimerVisite(ClientAcheteur *clientAcheteur,double propAchat, unsigned int identifiant); // Permet de supprimer une visite quelconque
 
-    void ajouterNouvelleVisite(ClientAcheteur *clientAcheteur,Visite *visite);
-    void supprimerVisite(ClientAcheteur *clientAcheteur,double propAchat, unsigned int identifiant);
-    void supprimerVisiteEtBien(ClientAcheteur *clientAcheteur);
+    void supprimerVisiteEtBien(ClientAcheteur *clientAcheteur);//Supprime une visite dont la propostion d'achat
+                                                                //a été accepté par le vendeur et visualiser par l'acheteur
 
-    void ajouterNouveauClientVendeur(ClientVendeur client);
-    void supprimerClientVendeur(unsigned int identifiant);
-    bool isClientExisteV(unsigned int identifiant);
-    ClientVendeur recupererClientVendeur(unsigned int identifiant);
-    void consulterMesBiensAVendre(ClientVendeur * cv);
+    void faireVisite(ClientAcheteur *ca, int identifiant);//Fais le déroulement de la visite en demandant la proposition d'achat de l'acheteur
 
+    //Client Vendeurs
+    void ajouterNouveauClientVendeur(ClientVendeur client); // Ajouter un nouveau vendeur via la console
+    void supprimerClientVendeur(unsigned int identifiant);// Supprimer un vendeur
+    bool isClientExisteV(unsigned int identifiant); // renvoie true si le client est présent dans la liste
+    ClientVendeur recupererClientVendeur(unsigned int identifiant); // renvoie le client vendeur demandé en fonction de l'identifiant envoyé
+    void consulterMesBiensAVendre(ClientVendeur * cv); // consulter les biens à vendre d'un vendeur en particulier
+    void ajouterVendeurViaFichier();
+
+    //Client
+    void creerClient();
+
+    //Client Acheteur
     void ajouterNouveauClientAcheteur(ClientAcheteur client);
     void supprimerClientAcheteur(unsigned int identifiant);
     bool isClientExisteA(unsigned int identifiant);
     ClientAcheteur recupererClientAcheteur(unsigned int identifiant);
+    void ajouterAcheteurViaFichier();
 
-   void ajouterNouveauBien(Bien * bien);
-   void AjouterBienAVendre(ClientVendeur *cv);
+    //Bien
+    void ajouterNouveauBien(Bien * bien);
+    void AjouterBienViaFichier(ClientVendeur *cv);
+    void AjouterBienAVendre(ClientVendeur *cv);
+    void consulterBien();
+    void consulterDetailsBien(int);
+    void afficherCategorieBiens();
+    void afficherCategorieBiensEtPrix(string cat,unsigned int bInf,unsigned int bSup);
 
-   void consulterBien();
-   void consulterDetailsBien(int);
-   void faireVisite(ClientAcheteur *ca, int identifiant);
-   void consulterMesOffresAchats(ClientVendeur *cv);
-   void consulteReponseOffreAchat(ClientAcheteur *ca);
-   void creerClient();
-   void afficherCategorieBiens();
-   void afficherCategorieBiensEtPrix(string cat,unsigned int bInf,unsigned int bSup);
-   int split(vector<string>& vecteur, string chaine, char separateur);
-   void AjouterBienViaFichier(ClientVendeur *cv);
-   void ajouterAcheteurViaFichier();
-   void ajouterVendeurViaFichier();
+    //Offres d'achats
+    void consulterMesOffresAchats(ClientVendeur *cv);
+    void consulteReponseOffreAchat(ClientAcheteur *ca);
 
-
-
+    //méthode usuelle
+    int split(vector<string>& vecteur, string chaine, char separateur);
 
 
-    std::vector<ClientVendeur> getCarnetClientsVendeurs() const;
 
-    std::vector<ClientAcheteur> getCarnetClientsAcheteurs() const;
 
-    std::vector<Bien*> getBiens() const;
 
-    std::map<Visite *, ClientAcheteur *> getCarnetVisites() const;
+
+
+
 
 };
 
