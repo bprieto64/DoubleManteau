@@ -13,9 +13,8 @@ protected:
     double prix;
     double mCarre;
     ClientVendeur* refClientVendeur;
-    virtual void afficher()=0;
-
-
+    virtual void afficher()=0; // pure virtual methode ce qui rend la classe abstraite
+                                // impossibilité de créer un objet de type Bien
 public:
     Bien();
     Bien(unsigned int identifiant, Adresse adresse , double prix, double mCarre,ClientVendeur * refClientVendeur);
@@ -34,7 +33,6 @@ public:
 
 
     ClientVendeur *getRefClientVendeur() const;
-
 
     unsigned int genererIdentifiant();
     void afficherTout();

@@ -15,9 +15,6 @@ public:
     Maison(unsigned int nbrPieces, bool hasGarage,bool hasJardin,bool hasPiscine,
            unsigned int identifiant, Adresse adresse , double prix,
            double mCarre,ClientVendeur * refClientVendeur);
-
-
-
     bool getHasGarage() const;
     void setHasGarage(bool value);
     bool getHasJardin() const;

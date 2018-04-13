@@ -1,7 +1,4 @@
 #include "maison.h"
-
-
-
 //CONSTRUCTOR(S)
 
 Maison::Maison()

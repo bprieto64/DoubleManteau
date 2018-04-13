@@ -10,7 +10,6 @@ public:
     ClientAcheteur();
     ClientAcheteur(unsigned int identifiant, string nom, Adresse adresse);
     void afficher();
-
 };
 
 #endif // CLIENTACHETEUR_H

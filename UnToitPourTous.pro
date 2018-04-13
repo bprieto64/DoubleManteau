@@ -18,7 +18,6 @@ SOURCES += \
         main.cpp \
     bien.cpp \
     appartement.cpp \
-    immeuble.cpp \
     maison.cpp \
     locauxpro.cpp \
     client.cpp \
@@ -32,7 +31,6 @@ SOURCES += \
 HEADERS += \
     bien.h \
     appartement.h \
-    immeuble.h \
     maison.h \
     locauxpro.h \
     client.h \

@@ -1,5 +1,20 @@
 #include "visite.h"
 
+//CONSTRUCTOR(S)
+Visite::Visite(Bien *bien, bool isPropAchat, double propAchat, string etat)
+{
+    this->bien=bien;
+    this->isPropAchat=isPropAchat;
+    this->propAchat=propAchat;
+    this->etat=etat;
+}
+Visite::Visite()
+{
+
+}
+
+//GETTERS AND SETTERS
+
 Bien *Visite::getBien() const
 {
     return bien;
@@ -30,15 +45,6 @@ void Visite::setPropAchat(double value)
     propAchat = value;
 }
 
-
-Visite::Visite(Bien *bien, bool isPropAchat, double propAchat, string etat)
-{
-    this->bien=bien;
-    this->isPropAchat=isPropAchat;
-    this->propAchat=propAchat;
-    this->etat=etat;
-}
-
 string Visite::getEtat() const
 {
     return etat;
@@ -49,7 +55,4 @@ void Visite::setEtat(const string &value)
     etat = value;
 }
 
-Visite::Visite()
-{
-    
-}
+

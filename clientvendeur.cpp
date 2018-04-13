@@ -10,7 +10,6 @@ ClientVendeur::ClientVendeur(unsigned int identifiant, string nom, Adresse adres
 {
 
 }
-
 std::vector<Bien *> ClientVendeur::getMesbiens() const
 {
     return mesbiens;

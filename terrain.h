@@ -12,7 +12,6 @@ public:
     Terrain();
     Terrain(bool,unsigned int identifiant, Adresse adresse , double prix,
             double mCarre,ClientVendeur *refClientVendeur);
-
     bool getEstConstructible();
     void setEstConstructible(bool);
     void afficher();

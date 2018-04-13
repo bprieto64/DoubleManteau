@@ -11,7 +11,7 @@ private :
     bool hasCave;
     bool hasBalcon;
 
-//ah bg
+    //ah bg
 
 
 public:

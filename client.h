@@ -20,7 +20,8 @@ public:
     void setAdresse(Adresse &value);
     unsigned int getIdentifiant() const;
     void setIdentifiant(unsigned int value);
-    virtual void afficher()=0;
+    virtual void afficher()=0;// pure virtual methode ce qui rend la classe abstraite
+                                // impossibilité de créer un objet de type Client
 };
 
 #endif // CLIENT_H

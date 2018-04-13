@@ -1,5 +1,6 @@
 #include "terrain.h"
 
+//CONSTRUCTOR(S)
 Terrain::Terrain()
 {
 
@@ -12,6 +13,7 @@ Terrain::Terrain(bool eC, unsigned int identifiant, Adresse adresse, double prix
     this->estConstructible=eC;
 }
 
+//GETTERS AND SETTERS
 bool Terrain::getEstConstructible(){
     return estConstructible;
 }
